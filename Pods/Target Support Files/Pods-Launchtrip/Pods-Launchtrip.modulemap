@@ -1,0 +1,6 @@
+framework module Pods_Launchtrip {
+  umbrella header "Pods-Launchtrip-umbrella.h"
+
+  export *
+  module * { export * }
+}
