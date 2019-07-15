@@ -1,17 +1,18 @@
 //
-//  ViewController.swift
+//  TutorialViewController.swift
 //  Launchtrip
 //
-//  Created by Drew Sen on 2019-06-26.
+//  Created by Drew Sen on 2019-07-15.
 //  Copyright © 2019 Drew Sen. All rights reserved.
 //
+
 
 import UIKit
 import paper_onboarding
 
-class ViewController: UIViewController {
+class TutorialViewController: UIViewController {
     @IBOutlet var skipButton: UIButton!
-
+    
     
     
     fileprivate let items = [
@@ -37,18 +38,20 @@ class ViewController: UIViewController {
                            titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
         
         ]
-
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         skipButton.isHidden = true
-
+        
         
         setupPaperOnboardingView()
         view.bringSubviewToFront(skipButton)
-
+        
     }
+    
+
     
     private func setupPaperOnboardingView() {
         let onboarding = PaperOnboarding()
@@ -69,19 +72,23 @@ class ViewController: UIViewController {
             view.addConstraint(constraint)
         }
     }
-
+    
 }
 
-extension ViewController {
+extension TutorialViewController {
     
     @IBAction func skipButtonTapped(_: UIButton) {
         print(#function)
+        let onboardingViewController = OnboardingViewController(nibName: "OnboardingViewController", bundle: Bundle.main)
+        
+        present(onboardingViewController, animated: true, completion: nil)
+
     }
 }
 
 // MARK: PaperOnboardingDelegate
 
-extension ViewController: PaperOnboardingDelegate {
+extension TutorialViewController: PaperOnboardingDelegate {
     
     func onboardingWillTransitonToIndex(_ index: Int) {
         skipButton.isHidden = index == 2 ? false : true
@@ -101,7 +108,7 @@ extension ViewController: PaperOnboardingDelegate {
 
 // MARK: PaperOnboardingDataSource
 
-extension ViewController: PaperOnboardingDataSource {
+extension TutorialViewController: PaperOnboardingDataSource {
     
     func onboardingItem(at index: Int) -> OnboardingItemInfo {
         return items[index]
@@ -126,9 +133,10 @@ extension ViewController: PaperOnboardingDataSource {
 
 
 //MARK: Constants
-private extension ViewController {
+private extension TutorialViewController {
     
     static let titleFont = UIFont(name: "Nunito-Bold", size: 36.0) ?? UIFont.boldSystemFont(ofSize: 36.0)
     static let descriptionFont = UIFont(name: "OpenSans-Regular", size: 14.0) ?? UIFont.systemFont(ofSize: 14.0)
 }
+
 

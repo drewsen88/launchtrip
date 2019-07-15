@@ -8,6 +8,7 @@ target 'Launchtrip' do
   # Pods for Launchtrip
 
   pod 'paper-onboarding'
+  pod 'SurveyNative'
 
   target 'LaunchtripTests' do
     inherit! :search_paths

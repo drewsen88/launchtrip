@@ -1,2 +1,3 @@
 ${PODS_ROOT}/Target Support Files/Pods-Launchtrip/Pods-Launchtrip-frameworks.sh
+${BUILT_PRODUCTS_DIR}/SurveyNative/SurveyNative.framework
 ${BUILT_PRODUCTS_DIR}/paper-onboarding/paper_onboarding.framework

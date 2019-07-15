@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+//        let viewController = OnboardingViewController(nibName: "OnboardingViewController", bundle: Bundle.main)
+//        window?.rootViewController = viewController
+
         return true
     }
 
@@ -44,3 +48,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+// MARK: UIApplication extensions
+
+extension UIApplication {
+    
+    class func getTopViewController(base: UIViewController? = UIApplication.shared.keyWindow?.rootViewController) -> UIViewController? {
+        
+        if let nav = base as? UINavigationController {
+            return getTopViewController(base: nav.visibleViewController)
+            
+        } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+            return getTopViewController(base: selected)
+            
+        } else if let presented = base?.presentedViewController {
+            return getTopViewController(base: presented)
+        }
+        return base
+    }
+}
