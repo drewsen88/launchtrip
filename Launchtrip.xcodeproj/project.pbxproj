@@ -17,12 +17,13 @@
 		5040ACEA22C3E977000F73E4 /* LaunchtripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040ACE922C3E977000F73E4 /* LaunchtripTests.swift */; };
 		5040ACF522C3E977000F73E4 /* LaunchtripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040ACF422C3E977000F73E4 /* LaunchtripUITests.swift */; };
 		50AEDE2222DCED3200EFF185 /* ExampleQuestions.json in Resources */ = {isa = PBXBuildFile; fileRef = 50AEDE2122DCED3200EFF185 /* ExampleQuestions.json */; };
-		50AEDE2622DCF0D700EFF185 /* OnboardingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50AEDE2522DCF0D600EFF185 /* OnboardingViewController.xib */; };
 		50AEDE2822DCF86A00EFF185 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AEDE2722DCF86A00EFF185 /* TutorialViewController.swift */; };
 		50BECB6C22CF88A400146AE6 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BECB6822CF88A400146AE6 /* OpenSans-Regular.ttf */; };
 		50BECB6D22CF88A400146AE6 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BECB6922CF88A400146AE6 /* Nunito-Regular.ttf */; };
 		50BECB6E22CF88A400146AE6 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BECB6A22CF88A400146AE6 /* Nunito-Bold.ttf */; };
 		50BECB6F22CF88A400146AE6 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BECB6B22CF88A400146AE6 /* Nunito-Light.ttf */; };
+		50F9A8C822E13A3300A9337E /* SPFakeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F9A8C622E13A3300A9337E /* SPFakeBarView.swift */; };
+		50F9A8C922E13A3300A9337E /* SPFakeBarNavigationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F9A8C722E13A3300A9337E /* SPFakeBarNavigationStyle.swift */; };
 		869ACB84085D5C917DA4A5B7 /* Pods_LaunchtripUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B448EE84DDEA6713937F4F90 /* Pods_LaunchtripUITests.framework */; };
 		B6734E0B27E8F2E383485519 /* Pods_LaunchtripTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E221B3776706C9313D07D527 /* Pods_LaunchtripTests.framework */; };
 /* End PBXBuildFile section */
@@ -60,12 +61,13 @@
 		5040ACF422C3E977000F73E4 /* LaunchtripUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchtripUITests.swift; sourceTree = "<group>"; };
 		5040ACF622C3E977000F73E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50AEDE2122DCED3200EFF185 /* ExampleQuestions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ExampleQuestions.json; sourceTree = "<group>"; };
-		50AEDE2522DCF0D600EFF185 /* OnboardingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = OnboardingViewController.xib; sourceTree = "<group>"; };
 		50AEDE2722DCF86A00EFF185 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		50BECB6822CF88A400146AE6 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		50BECB6922CF88A400146AE6 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		50BECB6A22CF88A400146AE6 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		50BECB6B22CF88A400146AE6 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
+		50F9A8C622E13A3300A9337E /* SPFakeBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFakeBarView.swift; sourceTree = "<group>"; };
+		50F9A8C722E13A3300A9337E /* SPFakeBarNavigationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFakeBarNavigationStyle.swift; sourceTree = "<group>"; };
 		60A2561B1FB4BD4E2DD37CF1 /* Pods-LaunchtripUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaunchtripUITests.debug.xcconfig"; path = "Target Support Files/Pods-LaunchtripUITests/Pods-LaunchtripUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		95C4C06E2B94CECC1F9B1AB4 /* Pods-LaunchtripTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LaunchtripTests.release.xcconfig"; path = "Target Support Files/Pods-LaunchtripTests/Pods-LaunchtripTests.release.xcconfig"; sourceTree = "<group>"; };
 		A0E26788E4617140D065003B /* Pods_Launchtrip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Launchtrip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -140,7 +142,7 @@
 		5040ACD322C3E975000F73E4 /* Launchtrip */ = {
 			isa = PBXGroup;
 			children = (
-				50AEDE2522DCF0D600EFF185 /* OnboardingViewController.xib */,
+				50F9A8CA22E13A3800A9337E /* SPFakeBar */,
 				50AEDE2122DCED3200EFF185 /* ExampleQuestions.json */,
 				5040ACD422C3E975000F73E4 /* AppDelegate.swift */,
 				5040ACD622C3E975000F73E4 /* OnboardingViewController.swift */,
@@ -180,6 +182,15 @@
 				50BECB6822CF88A400146AE6 /* OpenSans-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		50F9A8CA22E13A3800A9337E /* SPFakeBar */ = {
+			isa = PBXGroup;
+			children = (
+				50F9A8C722E13A3300A9337E /* SPFakeBarNavigationStyle.swift */,
+				50F9A8C622E13A3300A9337E /* SPFakeBarView.swift */,
+			);
+			path = SPFakeBar;
 			sourceTree = "<group>";
 		};
 		E6B7B7527F2151C3FB39AB87 /* Pods */ = {
@@ -318,7 +329,6 @@
 				5040ACDF22C3E977000F73E4 /* LaunchScreen.storyboard in Resources */,
 				5040ACDC22C3E977000F73E4 /* Assets.xcassets in Resources */,
 				50AEDE2222DCED3200EFF185 /* ExampleQuestions.json in Resources */,
-				50AEDE2622DCF0D700EFF185 /* OnboardingViewController.xib in Resources */,
 				50BECB6C22CF88A400146AE6 /* OpenSans-Regular.ttf in Resources */,
 				50BECB6E22CF88A400146AE6 /* Nunito-Bold.ttf in Resources */,
 				5040ACDA22C3E975000F73E4 /* Main.storyboard in Resources */,
@@ -433,6 +443,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				5040ACD722C3E975000F73E4 /* OnboardingViewController.swift in Sources */,
+				50F9A8C922E13A3300A9337E /* SPFakeBarNavigationStyle.swift in Sources */,
+				50F9A8C822E13A3300A9337E /* SPFakeBarView.swift in Sources */,
 				50101DC022CF8D5600661531 /* Images.swift in Sources */,
 				50AEDE2822DCF86A00EFF185 /* TutorialViewController.swift in Sources */,
 				5040ACD522C3E975000F73E4 /* AppDelegate.swift in Sources */,

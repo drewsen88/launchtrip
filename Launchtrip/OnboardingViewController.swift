@@ -9,9 +9,18 @@
 import UIKit
 import paper_onboarding
 import SurveyNative
+import SPStorkController
 
 class OnboardingViewController: SurveyViewController, SurveyAnswerDelegate, CustomConditionDelegate, ValidationFailedDelegate  {
+
     
+    let navBar = SPFakeBarView(style: .stork)
+    var lightStatusBar: Bool = false
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return self.lightStatusBar ? .lightContent : .default
+    }
+
+
     fileprivate let items = [
         OnboardingItemInfo(informationImage: Asset.hotels.image,
                            title: "Hotels",
@@ -40,10 +49,11 @@ class OnboardingViewController: SurveyViewController, SurveyAnswerDelegate, Cust
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        
         self.setSurveyAnswerDelegate(self)
         self.setCustomConditionDelegate(self)
         self.setValidationFailedDelegate(self)
+        
+        
         
     }
     
@@ -57,8 +67,10 @@ class OnboardingViewController: SurveyViewController, SurveyAnswerDelegate, Cust
             let storyboardName = "Main"
             let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
             guard let eventSearchViewController = storyboard.instantiateViewController(withIdentifier: viewControllerStoryboardId) as UIViewController? else { return }
-            self.presentingViewController?.view.isHidden = true
-            self.presentingViewController?.present(eventSearchViewController, animated: true, completion: nil)
+            
+            //Change view to a thank you here
+//            self.presentingViewController?.view = true
+            self.presentingViewController?.present(eventSearchViewController, animated: false, completion: nil)
             print("Showing event search view in top most controller")
 
         }
@@ -137,12 +149,37 @@ class OnboardingViewController: SurveyViewController, SurveyAnswerDelegate, Cust
         
         return topMostViewController
     }
+    
+    @objc func dismissAction() {
+        SPStorkController.dismissWithConfirmation(controller: self, completion: nil)
+    }
+
 
 
 }
 
 
-//MARK: Constants
+extension OnboardingViewController: SPStorkControllerConfirmDelegate {
+    
+    var needConfirm: Bool {
+        return true
+    }
+    
+    func confirm(_ completion: @escaping (Bool) -> ()) {
+        let alertController = UIAlertController(title: "Need dismiss?", message: "It test confirm option for SPStorkController", preferredStyle: .actionSheet)
+        print(#function)
+        //        alertController.addDestructiveAction(title: "Confirm", complection: {
+        //            completion(true)
+        //        })
+        //        alertController.addCancelAction(title: "Cancel") {
+        //            completion(false)
+        //        }
+        //        self.present(alertController)
+    }
+}
+
+
+//MARK: Extensions
 private extension OnboardingViewController {
     
     static let titleFont = UIFont(name: "Nunito-Bold", size: 36.0) ?? UIFont.boldSystemFont(ofSize: 36.0)

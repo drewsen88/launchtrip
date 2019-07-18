@@ -9,11 +9,11 @@
 
 import UIKit
 import paper_onboarding
+import SPStorkController
 
 class TutorialViewController: UIViewController {
+    
     @IBOutlet var skipButton: UIButton!
-    
-    
     
     fileprivate let items = [
         OnboardingItemInfo(informationImage: Asset.hotels.image,
@@ -44,7 +44,6 @@ class TutorialViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         skipButton.isHidden = true
-        
         
         setupPaperOnboardingView()
         view.bringSubviewToFront(skipButton)
@@ -78,12 +77,26 @@ class TutorialViewController: UIViewController {
 extension TutorialViewController {
     
     @IBAction func skipButtonTapped(_: UIButton) {
+        
         print(#function)
-        let onboardingViewController = OnboardingViewController(nibName: "OnboardingViewController", bundle: Bundle.main)
+        
+        
+        let viewControllerStoryboardId = "OnboardingViewController"
+        let storyboardName = "Main"
+        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
+        let onboardingViewController = storyboard.instantiateViewController(withIdentifier: viewControllerStoryboardId)
+        object_setClass(onboardingViewController, OnboardingViewController.self)
+
+        let transitionDelegate = SPStorkTransitioningDelegate()
+        transitionDelegate.storkDelegate = self
+        transitionDelegate.confirmDelegate = onboardingViewController as? SPStorkControllerConfirmDelegate
+        onboardingViewController.transitioningDelegate = transitionDelegate
+        onboardingViewController.modalPresentationStyle = .custom        
         
         present(onboardingViewController, animated: true, completion: nil)
-
+        
     }
+    
 }
 
 // MARK: PaperOnboardingDelegate
@@ -104,7 +117,18 @@ extension TutorialViewController: PaperOnboardingDelegate {
     }
 }
 
+// MARK: SPStorkControllerDelegate
 
+extension TutorialViewController: SPStorkControllerDelegate {
+    
+    func didDismissStorkByTap() {
+        print("SPStorkControllerDelegate - didDismissStorkByTap")
+    }
+    
+    func didDismissStorkBySwipe() {
+        print("SPStorkControllerDelegate - didDismissStorkBySwipe")
+    }
+}
 
 // MARK: PaperOnboardingDataSource
 

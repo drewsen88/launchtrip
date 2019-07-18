@@ -9,6 +9,8 @@ target 'Launchtrip' do
 
   pod 'paper-onboarding'
   pod 'SurveyNative'
+  pod 'SwiftEntryKit', '1.0.2'
+  pod 'SPStorkController'
 
   target 'LaunchtripTests' do
     inherit! :search_paths
