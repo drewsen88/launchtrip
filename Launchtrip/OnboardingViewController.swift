@@ -10,12 +10,39 @@ import UIKit
 import paper_onboarding
 import SurveyNative
 import SPStorkController
+import SwiftEntryKit
 
 class OnboardingViewController: SurveyViewController, SurveyAnswerDelegate, CustomConditionDelegate, ValidationFailedDelegate  {
 
     
     let navBar = SPFakeBarView(style: .stork)
     var lightStatusBar: Bool = false
+    var attributes: EKAttributes? = nil
+    
+    // Cumputed for the sake of reusability
+    var bottomAlertAttributes: EKAttributes {
+        var attributes = EKAttributes.bottomFloat
+        attributes.hapticFeedbackType = .success
+        attributes.displayDuration = .infinity
+        attributes.entryBackground = .color(color: .white)
+        attributes.screenBackground = .color(color: .dimmedLightBackground)
+        attributes.shadow = .active(with: .init(color: .black, opacity: 0.3, radius: 8))
+        attributes.screenInteraction = .dismiss
+        attributes.entryInteraction = .absorbTouches
+        attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+        attributes.roundCorners = .all(radius: 25)
+        attributes.entranceAnimation = .init(translate: .init(duration: 0.7, spring: .init(damping: 1, initialVelocity: 0)),
+                                             scale: .init(from: 1.05, to: 1, duration: 0.4, spring: .init(damping: 1, initialVelocity: 0)))
+        attributes.exitAnimation = .init(translate: .init(duration: 0.2))
+        attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.2)))
+        attributes.positionConstraints.verticalOffset = 10
+        attributes.positionConstraints.size = .init(width: .offset(value: 20), height: .intrinsic)
+        attributes.positionConstraints.maxSize = .init(width: .constant(value: UIScreen.main.bounds.size.width), height: .intrinsic)
+        attributes.statusBar = .dark
+        return attributes
+    }
+
+
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return self.lightStatusBar ? .lightContent : .default
     }
@@ -45,16 +72,13 @@ class OnboardingViewController: SurveyViewController, SurveyAnswerDelegate, Cust
         
         ]
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.setSurveyAnswerDelegate(self)
         self.setCustomConditionDelegate(self)
         self.setValidationFailedDelegate(self)
-        
-        
-        
+    
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -62,41 +86,66 @@ class OnboardingViewController: SurveyViewController, SurveyAnswerDelegate, Cust
         if isBeingDismissed{
             // TODO: Do your stuff here.
             print("Onboarding view is being dismissed")
+            setupPopupAttributes()
 
             let viewControllerStoryboardId = "EventSearchViewController"
             let storyboardName = "Main"
             let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
             guard let eventSearchViewController = storyboard.instantiateViewController(withIdentifier: viewControllerStoryboardId) as UIViewController? else { return }
             
-            //Change view to a thank you here
-//            self.presentingViewController?.view = true
-            self.presentingViewController?.present(eventSearchViewController, animated: false, completion: nil)
+            showLightAwesomePopupMessage(attributes: attributes!)
             print("Showing event search view in top most controller")
+            
+            //TODO: Properly present event search view controller
+            //Change view to a thank you here
+            //            self.presentingViewController?.view = true
+            //            self.presentingViewController?.present(eventSearchViewController, animated: false, completion: nil)
+
 
         }
 
     }
     
     
-    private func setupPaperOnboardingView() {
-        let onboarding = PaperOnboarding()
-        onboarding.delegate = self
-        onboarding.dataSource = self
-        onboarding.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(onboarding)
+    private func setupPopupAttributes() {
         
-        // Add constraints
-        for attribute: NSLayoutConstraint.Attribute in [.left, .right, .top, .bottom] {
-            let constraint = NSLayoutConstraint(item: onboarding,
-                                                attribute: attribute,
-                                                relatedBy: .equal,
-                                                toItem: view,
-                                                attribute: attribute,
-                                                multiplier: 1,
-                                                constant: 0)
-            view.addConstraint(constraint)
-        }
+        attributes = bottomAlertAttributes
+        attributes?.scroll = .edgeCrossingDisabled(swipeable: true)
+        attributes?.entranceAnimation = .init(translate: .init(duration: 0.5, spring: .init(damping: 1, initialVelocity: 0)))
+        attributes?.entryBackground = .gradient(gradient: .init(colors: [EKColor.LightPink.first, EKColor.LightPink.last], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+        attributes?.positionConstraints = .fullWidth
+        attributes?.positionConstraints.safeArea = .empty(fillSafeArea: true)
+        attributes?.roundCorners = .top(radius: 20)
+
     }
+    
+    private func showLightAwesomePopupMessage(attributes: EKAttributes) {
+        let image = UIImage(named: "ic_done_all_light_48pt")!
+        let title = "Awesome!"
+        let description = "You are using SwiftEntryKit, and this is a pop up with important content"
+        showPopupMessage(attributes: attributes, title: title, titleColor: .white, description: description, descriptionColor: .white, buttonTitleColor: EKColor.Gray.mid, buttonBackgroundColor: .white, image: image)
+    }
+
+    
+    private func showPopupMessage(attributes: EKAttributes, title: String, titleColor: UIColor, description: String, descriptionColor: UIColor, buttonTitleColor: UIColor, buttonBackgroundColor: UIColor, image: UIImage? = nil) {
+        
+        var themeImage: EKPopUpMessage.ThemeImage?
+        
+        if let image = image {
+            themeImage = .init(image: .init(image: image, size: CGSize(width: 60, height: 60), contentMode: .scaleAspectFit))
+        }
+        
+        let title = EKProperty.LabelContent(text: title, style: .init(font: MainFont.medium.with(size: 24), color: titleColor, alignment: .center))
+        let description = EKProperty.LabelContent(text: description, style: .init(font: MainFont.light.with(size: 16), color: descriptionColor, alignment: .center))
+        let button = EKProperty.ButtonContent(label: .init(text: "Got it!", style: .init(font: MainFont.bold.with(size: 16), color: buttonTitleColor)), backgroundColor: buttonBackgroundColor, highlightedBackgroundColor: buttonTitleColor.withAlphaComponent(0.05))
+        let message = EKPopUpMessage(themeImage: themeImage, title: title, description: description, button: button) {
+            SwiftEntryKit.dismiss()
+        }
+        
+        let contentView = EKPopUpMessageView(with: message)
+        SwiftEntryKit.display(entry: contentView, using: attributes)
+    }
+
     
     override func surveyJsonFile() -> String {
         return "ExampleQuestions"
@@ -155,6 +204,7 @@ class OnboardingViewController: SurveyViewController, SurveyAnswerDelegate, Cust
     }
 
 
+    
 
 }
 
