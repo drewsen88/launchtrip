@@ -30,12 +30,28 @@
                                     <action selector="skipButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Qk-J7-24w"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zz7-uc-bPa">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" red="1" green="0.43743923400000001" blue="0.37233983609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2J4-cB-TKW">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" red="1" green="0.40109251264682921" blue="0.64663835429610694" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2J4-cB-TKW" secondAttribute="trailing" id="8Mm-PI-w8v"/>
                             <constraint firstItem="cv2-jh-qlw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Kfc-Xe-Fqq"/>
+                            <constraint firstItem="2J4-cB-TKW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WLH-LS-lUa"/>
                             <constraint firstItem="cv2-jh-qlw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="XAe-LB-VBj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zz7-uc-bPa" secondAttribute="bottom" id="ZcM-5o-z0O"/>
+                            <constraint firstItem="zz7-uc-bPa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aIq-xg-yXG"/>
+                            <constraint firstItem="zz7-uc-bPa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ban-y5-pj1"/>
                             <constraint firstItem="cv2-jh-qlw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="bjp-6K-Pda"/>
+                            <constraint firstItem="2J4-cB-TKW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="olJ-SI-aFY"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2J4-cB-TKW" secondAttribute="bottom" id="q15-kg-5Wc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zz7-uc-bPa" secondAttribute="trailing" id="w6b-b3-vpI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
@@ -45,12 +61,14 @@
                     </view>
                     <navigationItem key="navigationItem" id="FE6-I4-nS1"/>
                     <connections>
+                        <outlet property="eventSearchView" destination="zz7-uc-bPa" id="elA-aN-6eL"/>
                         <outlet property="skipButton" destination="cv2-jh-qlw" id="Q4n-Ad-Vtr"/>
+                        <outlet property="tutorialView" destination="2J4-cB-TKW" id="nCf-Nu-eCC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="87" y="119"/>
+            <point key="canvasLocation" x="86.956521739130437" y="118.52678571428571"/>
         </scene>
         <!--Onboarding View Controller-->
         <scene sceneID="BLy-pg-JVf">
@@ -97,17 +115,31 @@
         <!--View Controller-->
         <scene sceneID="onn-16-6MX">
             <objects>
-                <viewController storyboardIdentifier="EventSearchViewController" id="U7G-ds-DFJ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventSearchViewController" modalPresentationStyle="overCurrentContext" id="U7G-ds-DFJ" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cn7-jJ-QuI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkV-y1-ZKg">
+                                <rect key="frame" x="131" y="44" width="184" height="52"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="lkV-y1-ZKg" firstAttribute="top" secondItem="FZ4-a6-D5o" secondAttribute="top" id="1WT-bZ-G4R"/>
+                            <constraint firstItem="FZ4-a6-D5o" firstAttribute="bottom" secondItem="lkV-y1-ZKg" secondAttribute="bottom" constant="766" id="CoT-B8-GpK"/>
+                            <constraint firstItem="FZ4-a6-D5o" firstAttribute="trailing" secondItem="lkV-y1-ZKg" secondAttribute="trailing" constant="99" id="Z4K-lG-UjF"/>
+                            <constraint firstItem="lkV-y1-ZKg" firstAttribute="leading" secondItem="FZ4-a6-D5o" secondAttribute="leading" constant="131" id="l28-Hb-2LZ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="FZ4-a6-D5o"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Vc-PL-Aqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1841" y="119"/>
+            <point key="canvasLocation" x="1840.5797101449277" y="118.52678571428571"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OEq-5z-Zfn">

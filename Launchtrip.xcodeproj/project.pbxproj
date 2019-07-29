@@ -22,6 +22,7 @@
 		50BECB6D22CF88A400146AE6 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BECB6922CF88A400146AE6 /* Nunito-Regular.ttf */; };
 		50BECB6E22CF88A400146AE6 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BECB6A22CF88A400146AE6 /* Nunito-Bold.ttf */; };
 		50BECB6F22CF88A400146AE6 /* Nunito-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BECB6B22CF88A400146AE6 /* Nunito-Light.ttf */; };
+		50F86D8922EBCADF00C7DB54 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 50F86D8822EBCADF00C7DB54 /* GoogleService-Info.plist */; };
 		50F9A8C822E13A3300A9337E /* SPFakeBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F9A8C622E13A3300A9337E /* SPFakeBarView.swift */; };
 		50F9A8C922E13A3300A9337E /* SPFakeBarNavigationStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F9A8C722E13A3300A9337E /* SPFakeBarNavigationStyle.swift */; };
 		50F9A8CC22E1433D00A9337E /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50F9A8CB22E1433D00A9337E /* Font.swift */; };
@@ -68,6 +69,7 @@
 		50BECB6922CF88A400146AE6 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		50BECB6A22CF88A400146AE6 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
 		50BECB6B22CF88A400146AE6 /* Nunito-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Light.ttf"; sourceTree = "<group>"; };
+		50F86D8822EBCADF00C7DB54 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		50F9A8C622E13A3300A9337E /* SPFakeBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFakeBarView.swift; sourceTree = "<group>"; };
 		50F9A8C722E13A3300A9337E /* SPFakeBarNavigationStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SPFakeBarNavigationStyle.swift; sourceTree = "<group>"; };
 		50F9A8CB22E1433D00A9337E /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				5040ACDB22C3E977000F73E4 /* Assets.xcassets */,
 				5040ACDD22C3E977000F73E4 /* LaunchScreen.storyboard */,
 				5040ACE022C3E977000F73E4 /* Info.plist */,
+				50F86D8822EBCADF00C7DB54 /* GoogleService-Info.plist */,
 			);
 			path = Launchtrip;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 			files = (
 				50BECB6D22CF88A400146AE6 /* Nunito-Regular.ttf in Resources */,
 				50BECB6F22CF88A400146AE6 /* Nunito-Light.ttf in Resources */,
+				50F86D8922EBCADF00C7DB54 /* GoogleService-Info.plist in Resources */,
 				5040ACDF22C3E977000F73E4 /* LaunchScreen.storyboard in Resources */,
 				5040ACDC22C3E977000F73E4 /* Assets.xcassets in Resources */,
 				50AEDE2222DCED3200EFF185 /* ExampleQuestions.json in Resources */,
@@ -640,13 +644,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5JKDH6G9FS;
+				DEVELOPMENT_TEAM = 2S78247GL5;
 				INFOPLIST_FILE = Launchtrip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Launchtrip;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Launchtrip.alpha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -659,13 +663,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5JKDH6G9FS;
+				DEVELOPMENT_TEAM = 2S78247GL5;
 				INFOPLIST_FILE = Launchtrip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Launchtrip;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Launchtrip.alpha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

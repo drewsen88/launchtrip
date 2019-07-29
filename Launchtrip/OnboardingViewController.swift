@@ -48,29 +48,6 @@ class OnboardingViewController: SurveyViewController, SurveyAnswerDelegate, Cust
     }
 
 
-    fileprivate let items = [
-        OnboardingItemInfo(informationImage: Asset.hotels.image,
-                           title: "Hotels",
-                           description: "All hotels and hostels are sorted by hospitality rating",
-                           pageIcon: Asset.key.image,
-                           color: UIColor(red: 0.40, green: 0.56, blue: 0.71, alpha: 1.00),
-                           titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
-        
-        OnboardingItemInfo(informationImage: Asset.banks.image,
-                           title: "Banks",
-                           description: "We carefully verify all banks before add them into the app",
-                           pageIcon: Asset.wallet.image,
-                           color: UIColor(red: 0.40, green: 0.69, blue: 0.71, alpha: 1.00),
-                           titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
-        
-        OnboardingItemInfo(informationImage: Asset.stores.image,
-                           title: "Stores",
-                           description: "All local stores are categorized for your convenience",
-                           pageIcon: Asset.shoppingCart.image,
-                           color: UIColor(red: 0.61, green: 0.56, blue: 0.74, alpha: 1.00),
-                           titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
-        
-        ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,19 +69,36 @@ class OnboardingViewController: SurveyViewController, SurveyAnswerDelegate, Cust
             let storyboardName = "Main"
             let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
             guard let eventSearchViewController = storyboard.instantiateViewController(withIdentifier: viewControllerStoryboardId) as UIViewController? else { return }
+            eventSearchViewController.modalPresentationStyle = .currentContext
             
+//            self.presentingViewController?.dismiss(animated: true, completion: {
+////                tutorialViewController.present(eventSearchViewController, animated: true, completion: nil)
+//                print("Showing event search view in top most controller now")
+//
+//            })
+
             showLightAwesomePopupMessage(attributes: attributes!)
             print("Showing event search view in top most controller")
             
+//            let tutorialViewController = self.presentingViewController! as! TutorialViewController
+//            tutorialViewController.goToEventSearchView()
+            
+            
             //TODO: Properly present event search view controller
             //Change view to a thank you here
-            //            self.presentingViewController?.view = true
-            //            self.presentingViewController?.present(eventSearchViewController, animated: false, completion: nil)
-
+//                        self.presentingViewController?.view.isHidden = true
+//            self.navigationController?.dismiss(animated: true, completion: {
+//                print("dismissing navigation controller")
+//                })
+//            self.presentingViewController?.navigationController?.pushViewController(eventSearchViewController, animated: true)
+            
+//            self.navigationController?.present(eventSearchViewController, animated: true, completion: nil)
+//        self.presentingViewController?.present(eventSearchViewController, animated: false, completion: nil)
 
         }
 
     }
+    
     
     
     private func setupPopupAttributes() {
@@ -122,7 +116,7 @@ class OnboardingViewController: SurveyViewController, SurveyAnswerDelegate, Cust
     private func showLightAwesomePopupMessage(attributes: EKAttributes) {
         let image = UIImage(named: "ic_done_all_light_48pt")!
         let title = "Awesome!"
-        let description = "You are using SwiftEntryKit, and this is a pop up with important content"
+        let description = "Thank you for submitting your answers. Time to Launch your trip!"
         showPopupMessage(attributes: attributes, title: title, titleColor: .white, description: description, descriptionColor: .white, buttonTitleColor: EKColor.Gray.mid, buttonBackgroundColor: .white, image: image)
     }
 

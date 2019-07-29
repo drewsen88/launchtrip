@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,6 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        let viewController = OnboardingViewController(nibName: "OnboardingViewController", bundle: Bundle.main)
 //        window?.rootViewController = viewController
+        FirebaseApp.configure()
 
         return true
     }

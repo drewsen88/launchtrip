@@ -11,6 +11,7 @@ target 'Launchtrip' do
   pod 'SurveyNative'
   pod 'SwiftEntryKit', '1.0.2'
   pod 'SPStorkController'
+  pod 'Firebase/Analytics'
 
   target 'LaunchtripTests' do
     inherit! :search_paths

@@ -14,7 +14,9 @@ import SPStorkController
 class TutorialViewController: UIViewController {
     
     @IBOutlet var skipButton: UIButton!
-    
+    @IBOutlet weak var eventSearchView: UIView!
+        
+    @IBOutlet weak var tutorialView: UIView!
     fileprivate let items = [
         OnboardingItemInfo(informationImage: Asset.hotels.image,
                            title: "Hotels",
@@ -38,6 +40,15 @@ class TutorialViewController: UIViewController {
                            titleColor: UIColor.white, descriptionColor: UIColor.white, titleFont: titleFont, descriptionFont: descriptionFont),
         
         ]
+    
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if isBeingDismissed{
+            print("is being dismissed")
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -72,6 +83,35 @@ class TutorialViewController: UIViewController {
         }
     }
     
+    
+    public func goToEventSearchView() {
+        //        isFlipped = !isFlipped
+        //
+        //        let cardToFlip = isFlipped ? goldenView : greenView
+        //        let bottomCard = isFlipped ? greenView : goldenView
+        
+        UIView.transition(from: tutorialView,
+                          to: eventSearchView,
+                          duration: 0.5,
+                          options: [.transitionCurlUp, .showHideTransitionViews],
+                          completion: nil)
+        
+        
+        //        UIView.transition(with: cardToFlip!,
+        //                          duration: 0.5,
+        //                          options: [.transitionFlipFromRight],
+        //                          animations: {
+        //
+        //                            cardToFlip?.isHidden =  true
+        //        },
+        //                          completion: { _ in
+        //
+        //                            self.view.bringSubview(toFront: bottomCard!)
+        //                            cardToFlip?.isHidden = false
+        //        })
+    }
+
+    
 }
 
 extension TutorialViewController {
@@ -79,7 +119,6 @@ extension TutorialViewController {
     @IBAction func skipButtonTapped(_: UIButton) {
         
         print(#function)
-        
         
         let viewControllerStoryboardId = "OnboardingViewController"
         let storyboardName = "Main"
@@ -96,6 +135,7 @@ extension TutorialViewController {
         present(onboardingViewController, animated: true, completion: nil)
         
     }
+    
     
 }
 

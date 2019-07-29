@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>789936744164-lf9vi9ckcsr9531h6sb689s0c3h4uo1f.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.789936744164-lf9vi9ckcsr9531h6sb689s0c3h4uo1f</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDvcmKNCB3j7wN1kORl1as0y1TUiKOZkUw</string>
+	<key>GCM_SENDER_ID</key>
+	<string>789936744164</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.Launchtrip.alpha</string>
+	<key>PROJECT_ID</key>
+	<string>launchtrip-b2c-ios</string>
+	<key>STORAGE_BUCKET</key>
+	<string>launchtrip-b2c-ios.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:789936744164:ios:df5efd2860341d57</string>
+	<key>DATABASE_URL</key>
+	<string>https://launchtrip-b2c-ios-4e33f.firebaseio.com</string>
+</dict>
+</plist>
