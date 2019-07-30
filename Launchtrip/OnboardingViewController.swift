@@ -148,7 +148,7 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
             "Let's start off with your name:",
             "Tell us a bit about yourself, " + username + ", so we can create a better experience for you \n \n Hotel Type?",
             "What do you prioritize when booking a hotel?",
-            "What bests fits your dining style? (Select all that apply)",
+            "What bests fits your dining style? \n \n (Select all that apply)",
             "Thanks! Lastly please enter your email to help us store your preferences",
             "All set " + username + ", we'll use your choices to help build the best experience"].enumerated().map { (index, title) -> Content in
                 let view = UIView(frame: CGRect(x: 0, y: 0, width: 550 * ratio, height: (300 * ratio) + 400))
@@ -174,10 +174,10 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
                         view.addSubview(tagView)
                         view.bringSubviewToFront(tagView)
                     case 3:
-                        let tagView = configureMultipleChoice(dy: label.frame.origin.y + label.frame.size.height, answers: ["Price is affordable","ans2","ans3","ans4"], isSingleTap: true)
+                        let tagView = configureMultipleChoice(dy: label.frame.size.height, answers: ["Price is affordable","ans2","ans3","ans4"], isSingleTap: true)
                         view.addSubview(tagView)
                     case 4:
-                        let tagView = configureMultipleChoice(dy: label.frame.origin.y + label.frame.size.height, answers: ["Michelin Starred","ans2","ans3","ans4", "ans5"], isSingleTap: false)
+                        let tagView = configureMultipleChoice(dy: label.frame.size.height, answers: ["Michelin Starred","ans2","ans3","ans4", "ans5"], isSingleTap: false)
                         view.addSubview(tagView)
                     case 5:
                         emailTextField = UITextField(frame: CGRect(x: 0, y: label.frame.origin.y + label.frame.size.height, width: label.frame.size.width, height: 40))
@@ -196,6 +196,16 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
 
                         view.addSubview(skipButton)
                         print(#function)
+                    case 6:
+                        let startTripButton = UIButton(frame: CGRect(x: 0, y: label.frame.origin.y +  label.frame.size.height, width: view.frame.size.width, height: 50))
+                        startTripButton.backgroundColor = .white
+                        startTripButton.setTitleColor(.black, for: .normal)
+                        startTripButton.layer.cornerRadius = 10
+                        startTripButton.setTitle("Start Trip", for: [])
+                        startTripButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+                        
+                        view.addSubview(startTripButton)
+
                     default:
                         print("No text needed")
                 }
@@ -284,6 +294,7 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
         let button = EKProperty.ButtonContent(label: .init(text: "Got it!", style: .init(font: MainFont.bold.with(size: 16), color: buttonTitleColor)), backgroundColor: buttonBackgroundColor, highlightedBackgroundColor: buttonTitleColor.withAlphaComponent(0.05))
         let message = EKPopUpMessage(themeImage: themeImage, title: title, description: description, button: button) {
             SwiftEntryKit.dismiss()
+            self.moveForward()
         }
         
         let contentView = EKPopUpMessageView(with: message)
