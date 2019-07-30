@@ -1,6 +1,0 @@
-framework module SurveyNative {
-  umbrella header "SurveyNative-umbrella.h"
-
-  export *
-  module * { export * }
-}

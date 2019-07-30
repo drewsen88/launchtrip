@@ -46,24 +46,26 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.2.3):
     - GoogleUtilities/Logger
+  - Hue (5.0.0)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
-  - paper-onboarding (6.1.3)
+  - Pages (2.0.2)
+  - Presentation (4.1.2):
+    - Pages (~> 2.0)
   - QuickLayout (3.0.0)
   - SPStorkController (1.7.5)
-  - SurveyNative (0.2.3)
   - SwiftEntryKit (1.0.2):
     - QuickLayout (= 3.0.0)
 
 DEPENDENCIES:
   - Firebase/Analytics
-  - paper-onboarding
+  - Hue
+  - Presentation
   - SPStorkController
-  - SurveyNative
-  - SwiftEntryKit (= 1.0.2)
+  - SwiftEntryKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -73,11 +75,12 @@ SPEC REPOS:
     - FirebaseInstanceID
     - GoogleAppMeasurement
     - GoogleUtilities
+    - Hue
     - nanopb
-    - paper-onboarding
+    - Pages
+    - Presentation
     - QuickLayout
     - SPStorkController
-    - SurveyNative
     - SwiftEntryKit
 
 SPEC CHECKSUMS:
@@ -87,13 +90,14 @@ SPEC CHECKSUMS:
   FirebaseInstanceID: 9782fcfb89e4d7da76cc28eac4b8543dc7be4a4b
   GoogleAppMeasurement: 1e45fa601e6280c180880d57010390f6679cd971
   GoogleUtilities: d2b0e277a95962e09bb27f5cd42f5f0b6a506c7d
+  Hue: c129cb67be7d093a82bbbc30ce8a96757bf6f37a
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
-  paper-onboarding: 47ded9ede6ae9dd7ec135dddd8bd3e170b79d799
+  Pages: 5564ac6035c48fef7a837049314f57507d263b11
+  Presentation: 84974970fa451c89147d2bed4d5d50f857e71761
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   SPStorkController: be4ae2a5ee052ad78782f6144ffe7e951300ea67
-  SurveyNative: d0a597319ad3ae277d43a3768f66053e603aa6e0
   SwiftEntryKit: 7bcd42b3dbff59c431d60d6513129fd3679e4aaf
 
-PODFILE CHECKSUM: c3f0a9d082d7bab965b45da995e90eb8ff420a95
+PODFILE CHECKSUM: 5448c30233d9c1d71427cb62abc9cade8ff66ca1
 
 COCOAPODS: 1.7.4

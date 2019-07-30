@@ -11,8 +11,20 @@ import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    
 
     var window: UIWindow?
+    
+    private lazy var navigationController: UINavigationController = .init(
+        rootViewController: self.presentationController
+    )
+    private lazy var presentationController: OnboardingViewController = .init(pages: [])
+
+//    private lazy var navigationController: UINavigationController = .init(
+//        rootViewController: self.presentationController
+//    )
+//    private lazy var presentationController: OnboardingViewController = .init(pages: [])
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -21,6 +33,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        let viewController = OnboardingViewController(nibName: "OnboardingViewController", bundle: Bundle.main)
 //        window?.rootViewController = viewController
         FirebaseApp.configure()
+        
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        UINavigationBar.appearance().barStyle = .default
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().isTranslucent = true
+        
+        window = UIWindow(frame: UIScreen.main.bounds)
+        window?.rootViewController = navigationController
+        window?.makeKeyAndVisible()
+
 
         return true
     }

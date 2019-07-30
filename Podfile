@@ -7,12 +7,13 @@ target 'Launchtrip' do
 
   # Pods for Launchtrip
 
-  pod 'paper-onboarding'
-  pod 'SurveyNative'
-  pod 'SwiftEntryKit', '1.0.2'
+  
+  pod 'SwiftEntryKit'
   pod 'SPStorkController'
   pod 'Firebase/Analytics'
-
+  pod 'Presentation'
+  pod 'Hue'
+  
   target 'LaunchtripTests' do
     inherit! :search_paths
     # Pods for testing

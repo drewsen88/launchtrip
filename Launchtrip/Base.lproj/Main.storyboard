@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -13,7 +13,7 @@
         <!--Data Source-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="TutorialViewController" customModule="Launchtrip" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="OnboardingViewController" customModule="Launchtrip" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC" customClass="PaperOnboarding" customModule="paper_onboarding">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -30,28 +30,12 @@
                                     <action selector="skipButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9Qk-J7-24w"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zz7-uc-bPa">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" red="1" green="0.43743923400000001" blue="0.37233983609999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2J4-cB-TKW">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
-                                <color key="backgroundColor" red="1" green="0.40109251264682921" blue="0.64663835429610694" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="2J4-cB-TKW" secondAttribute="trailing" id="8Mm-PI-w8v"/>
                             <constraint firstItem="cv2-jh-qlw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Kfc-Xe-Fqq"/>
-                            <constraint firstItem="2J4-cB-TKW" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="WLH-LS-lUa"/>
                             <constraint firstItem="cv2-jh-qlw" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" symbolic="YES" id="XAe-LB-VBj"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="zz7-uc-bPa" secondAttribute="bottom" id="ZcM-5o-z0O"/>
-                            <constraint firstItem="zz7-uc-bPa" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="aIq-xg-yXG"/>
-                            <constraint firstItem="zz7-uc-bPa" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ban-y5-pj1"/>
                             <constraint firstItem="cv2-jh-qlw" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="bjp-6K-Pda"/>
-                            <constraint firstItem="2J4-cB-TKW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="olJ-SI-aFY"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="2J4-cB-TKW" secondAttribute="bottom" id="q15-kg-5Wc"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="zz7-uc-bPa" secondAttribute="trailing" id="w6b-b3-vpI"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
@@ -61,56 +45,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="FE6-I4-nS1"/>
                     <connections>
-                        <outlet property="eventSearchView" destination="zz7-uc-bPa" id="elA-aN-6eL"/>
                         <outlet property="skipButton" destination="cv2-jh-qlw" id="Q4n-Ad-Vtr"/>
-                        <outlet property="tutorialView" destination="2J4-cB-TKW" id="nCf-Nu-eCC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="86.956521739130437" y="118.52678571428571"/>
-        </scene>
-        <!--Onboarding View Controller-->
-        <scene sceneID="BLy-pg-JVf">
-            <objects>
-                <viewController storyboardIdentifier="OnboardingViewController" id="iUy-jv-bQR" customClass="OnboardingViewController" customModule="Launchtrip" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Lay-7q-fTS">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uvu-1F-WlW">
-                                <rect key="frame" x="0.0" y="10" width="414" height="44"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="mZA-fQ-i1G"/>
-                                </constraints>
-                                <items>
-                                    <navigationItem title="Launchtrip Survey" id="Exp-L5-6oc"/>
-                                </items>
-                            </navigationBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="hb2-3m-hzV">
-                                <rect key="frame" x="0.0" y="54" width="414" height="842"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="hb2-3m-hzV" secondAttribute="bottom" id="Bbb-vQ-yfC"/>
-                            <constraint firstAttribute="trailing" secondItem="Uvu-1F-WlW" secondAttribute="trailing" id="Cpn-Rc-Ztd"/>
-                            <constraint firstAttribute="trailing" secondItem="hb2-3m-hzV" secondAttribute="trailing" id="Ev3-Sd-8T7"/>
-                            <constraint firstItem="hb2-3m-hzV" firstAttribute="leading" secondItem="Lay-7q-fTS" secondAttribute="leading" id="Fuo-61-KUH"/>
-                            <constraint firstItem="Uvu-1F-WlW" firstAttribute="top" secondItem="Lay-7q-fTS" secondAttribute="top" constant="10" id="MF4-BR-z4I"/>
-                            <constraint firstItem="hb2-3m-hzV" firstAttribute="top" secondItem="Uvu-1F-WlW" secondAttribute="bottom" id="UHB-Ud-Ugp"/>
-                            <constraint firstItem="Uvu-1F-WlW" firstAttribute="leading" secondItem="Lay-7q-fTS" secondAttribute="leading" id="e2k-S8-7bw"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="vYs-Rn-9S7"/>
-                    </view>
-                    <connections>
-                        <outlet property="tableView" destination="hb2-3m-hzV" id="MlO-Zv-6Zb"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N4p-dT-fGY" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="936" y="119"/>
+            <point key="canvasLocation" x="238" y="119"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="onn-16-6MX">

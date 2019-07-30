@@ -10,14 +10,13 @@
 		17454144EEDB79BBD686799B /* Pods_Launchtrip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0E26788E4617140D065003B /* Pods_Launchtrip.framework */; };
 		50101DC022CF8D5600661531 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50101DBF22CF8D5600661531 /* Images.swift */; };
 		5040ACD522C3E975000F73E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040ACD422C3E975000F73E4 /* AppDelegate.swift */; };
-		5040ACD722C3E975000F73E4 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040ACD622C3E975000F73E4 /* OnboardingViewController.swift */; };
 		5040ACDA22C3E975000F73E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5040ACD822C3E975000F73E4 /* Main.storyboard */; };
 		5040ACDC22C3E977000F73E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5040ACDB22C3E977000F73E4 /* Assets.xcassets */; };
 		5040ACDF22C3E977000F73E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5040ACDD22C3E977000F73E4 /* LaunchScreen.storyboard */; };
 		5040ACEA22C3E977000F73E4 /* LaunchtripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040ACE922C3E977000F73E4 /* LaunchtripTests.swift */; };
 		5040ACF522C3E977000F73E4 /* LaunchtripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040ACF422C3E977000F73E4 /* LaunchtripUITests.swift */; };
 		50AEDE2222DCED3200EFF185 /* ExampleQuestions.json in Resources */ = {isa = PBXBuildFile; fileRef = 50AEDE2122DCED3200EFF185 /* ExampleQuestions.json */; };
-		50AEDE2822DCF86A00EFF185 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AEDE2722DCF86A00EFF185 /* TutorialViewController.swift */; };
+		50AEDE2822DCF86A00EFF185 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AEDE2722DCF86A00EFF185 /* OnboardingViewController.swift */; };
 		50BECB6C22CF88A400146AE6 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BECB6822CF88A400146AE6 /* OpenSans-Regular.ttf */; };
 		50BECB6D22CF88A400146AE6 /* Nunito-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BECB6922CF88A400146AE6 /* Nunito-Regular.ttf */; };
 		50BECB6E22CF88A400146AE6 /* Nunito-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BECB6A22CF88A400146AE6 /* Nunito-Bold.ttf */; };
@@ -52,7 +51,6 @@
 		50101DBF22CF8D5600661531 /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		5040ACD122C3E975000F73E4 /* Launchtrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Launchtrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5040ACD422C3E975000F73E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		5040ACD622C3E975000F73E4 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		5040ACD922C3E975000F73E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5040ACDB22C3E977000F73E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5040ACDE22C3E977000F73E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,7 +62,7 @@
 		5040ACF422C3E977000F73E4 /* LaunchtripUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchtripUITests.swift; sourceTree = "<group>"; };
 		5040ACF622C3E977000F73E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50AEDE2122DCED3200EFF185 /* ExampleQuestions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ExampleQuestions.json; sourceTree = "<group>"; };
-		50AEDE2722DCF86A00EFF185 /* TutorialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		50AEDE2722DCF86A00EFF185 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		50BECB6822CF88A400146AE6 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
 		50BECB6922CF88A400146AE6 /* Nunito-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Regular.ttf"; sourceTree = "<group>"; };
 		50BECB6A22CF88A400146AE6 /* Nunito-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Nunito-Bold.ttf"; sourceTree = "<group>"; };
@@ -152,8 +150,7 @@
 				50F9A8CA22E13A3800A9337E /* SPFakeBar */,
 				50AEDE2122DCED3200EFF185 /* ExampleQuestions.json */,
 				5040ACD422C3E975000F73E4 /* AppDelegate.swift */,
-				5040ACD622C3E975000F73E4 /* OnboardingViewController.swift */,
-				50AEDE2722DCF86A00EFF185 /* TutorialViewController.swift */,
+				50AEDE2722DCF86A00EFF185 /* OnboardingViewController.swift */,
 				5040ACD822C3E975000F73E4 /* Main.storyboard */,
 				5040ACDB22C3E977000F73E4 /* Assets.xcassets */,
 				5040ACDD22C3E977000F73E4 /* LaunchScreen.storyboard */,
@@ -460,12 +457,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5040ACD722C3E975000F73E4 /* OnboardingViewController.swift in Sources */,
 				50F9A8C922E13A3300A9337E /* SPFakeBarNavigationStyle.swift in Sources */,
 				50F9A8CC22E1433D00A9337E /* Font.swift in Sources */,
 				50F9A8C822E13A3300A9337E /* SPFakeBarView.swift in Sources */,
 				50101DC022CF8D5600661531 /* Images.swift in Sources */,
-				50AEDE2822DCF86A00EFF185 /* TutorialViewController.swift in Sources */,
+				50AEDE2822DCF86A00EFF185 /* OnboardingViewController.swift in Sources */,
 				5040ACD522C3E975000F73E4 /* AppDelegate.swift in Sources */,
 				50F9A8CF22E143B200A9337E /* UIColor+Utils.swift in Sources */,
 			);
