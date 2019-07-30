@@ -44,9 +44,6 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="FE6-I4-nS1"/>
-                    <connections>
-                        <outlet property="skipButton" destination="cv2-jh-qlw" id="Q4n-Ad-Vtr"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

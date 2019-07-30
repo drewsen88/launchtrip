@@ -11,9 +11,12 @@ import UIKit
 import SPStorkController
 import Hue
 import Presentation
+import SwiftEntryKit
 
-class OnboardingViewController: PresentationController {
+class OnboardingViewController: PresentationController, UITextFieldDelegate {
     
+    var attributes: EKAttributes! = nil
+
     private struct BackgroundImage {
         let name: String
         let left: CGFloat
@@ -68,10 +71,35 @@ class OnboardingViewController: PresentationController {
         )
         
         return rightButton
-        }()
-
+    }()
     
-    @IBOutlet var skipButton: UIButton!
+    private func setupPopupAttributes() {
+        attributes = EKAttributes.centerFloat
+        attributes.hapticFeedbackType = .success
+        attributes.displayDuration = .infinity
+        attributes.entryBackground = .gradient(gradient: .init(colors: [UIColor(rgb: 0xfffbd5), UIColor(rgb: 0xb20a2c)], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+        attributes.screenBackground = .color(color: .dimmedDarkBackground)
+        attributes.shadow = .active(with: .init(color: .black, opacity: 0.3, radius: 8))
+        attributes.screenInteraction = .dismiss
+        attributes.entryInteraction = .absorbTouches
+        attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .jolt)
+        attributes.roundCorners = .all(radius: 8)
+        attributes.entranceAnimation = .init(translate: .init(duration: 0.7, spring: .init(damping: 0.7, initialVelocity: 0)),
+                                             scale: .init(from: 0.7, to: 1, duration: 0.4, spring: .init(damping: 1, initialVelocity: 0)))
+        attributes.exitAnimation = .init(translate: .init(duration: 0.2))
+        attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.35)))
+        attributes.positionConstraints.size = .init(width: .offset(value: 20), height: .intrinsic)
+        attributes.positionConstraints.maxSize = .init(width: .constant(value: UIScreen.main.bounds.size.width), height: .intrinsic)
+        attributes.statusBar = .dark
+
+    }
+
+    private var nameTextField : UITextField!
+    private var emailTextField : UITextField!
+
+    private lazy var username: String = ""
+    
+    private var skipButton: UIButton!
     @IBOutlet weak var eventSearchView: UIView!
         
     
@@ -93,6 +121,8 @@ class OnboardingViewController: PresentationController {
         navigationItem.rightBarButtonItem = rightButton
         view.backgroundColor = UIColor(hex: "FFBC00")
         
+        setupPopupAttributes()
+
         configureSlides()
         configureBackground()
     }
@@ -103,7 +133,7 @@ class OnboardingViewController: PresentationController {
     private func configureSlides() {
         let ratio: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 1 : 0.6
         let font = UIFont(name: "HelveticaNeue", size: 34.0 * ratio)!
-        let color = UIColor(hex: "FFE8A9")
+        let color = UIColor(hex: "000000")
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.center
         
@@ -116,17 +146,63 @@ class OnboardingViewController: PresentationController {
         let titles = [
             "Welcome to Launchtrip \n \n We'd like to ask you 5 questions to get know you! \n \n Let's get Started",
             "Let's start off with your name:",
-            "Tell us a bit about yourself, [NAME], so we can create a better experience for you",
+            "Tell us a bit about yourself, " + username + ", so we can create a better experience for you \n \n Hotel Type?",
             "What do you prioritize when booking a hotel?",
             "What bests fits your dining style? (Select all that apply)",
             "Thanks! Lastly please enter your email to help us store your preferences",
-            "All set [NAME], we'll use your choices to help build the best experience"].map { title -> Content in
-                let label = UILabel(frame: CGRect(x: 0, y: 0, width: 550 * ratio, height: 300 * ratio))
+            "All set " + username + ", we'll use your choices to help build the best experience"].enumerated().map { (index, title) -> Content in
+                let view = UIView(frame: CGRect(x: 0, y: 0, width: 550 * ratio, height: (300 * ratio) + 400))
+                view.isUserInteractionEnabled = true
+                let label = UILabel(frame: CGRect(x: 0, y: 50, width: view.frame.size.width, height: 300 * ratio))
                 label.numberOfLines = 7
                 label.attributedText = NSAttributedString(string: title, attributes: attributes)
-                let position = Position(left: 0.7, top: 0.35)
+                view.addSubview(label)
                 
-                return Content(view: label, position: position)
+                switch index {
+                    case 1:
+                        //add name textfield
+                        nameTextField = UITextField(frame: CGRect(x: 0, y: label.frame.origin.y + label.frame.size.height*0.75, width: label.frame.size.width, height: 40))
+                        nameTextField.borderStyle = .roundedRect
+                        nameTextField.clearButtonMode = .whileEditing
+                        nameTextField.placeholder = "Name"
+                        nameTextField.delegate = self
+                        nameTextField.tag = 1
+                        view.addSubview(nameTextField)
+                        view.bringSubviewToFront(nameTextField)
+                    case 2:
+                        let tagView = configureMultipleChoice(dy: label.frame.origin.y + label.frame.size.height, answers: ["ans1","ans2","ans3","ans4"], isSingleTap: true)
+                        view.addSubview(tagView)
+                        view.bringSubviewToFront(tagView)
+                    case 3:
+                        let tagView = configureMultipleChoice(dy: label.frame.origin.y + label.frame.size.height, answers: ["Price is affordable","ans2","ans3","ans4"], isSingleTap: true)
+                        view.addSubview(tagView)
+                    case 4:
+                        let tagView = configureMultipleChoice(dy: label.frame.origin.y + label.frame.size.height, answers: ["Michelin Starred","ans2","ans3","ans4", "ans5"], isSingleTap: false)
+                        view.addSubview(tagView)
+                    case 5:
+                        emailTextField = UITextField(frame: CGRect(x: 0, y: label.frame.origin.y + label.frame.size.height, width: label.frame.size.width, height: 40))
+                        emailTextField.borderStyle = .roundedRect
+                        emailTextField.clearButtonMode = .whileEditing
+                        emailTextField.placeholder = "email"
+                        emailTextField.delegate = self
+                        emailTextField.tag = 2
+                        view.addSubview(emailTextField)
+                        let skipButton = UIButton(frame: CGRect(x: view.center.x - 50, y: 500, width: 100, height: 50))
+                        skipButton.backgroundColor = .white
+                        skipButton.setTitleColor(.black, for: .normal)
+                        skipButton.layer.cornerRadius = 10
+                        skipButton.setTitle("Skip", for: [])
+                        skipButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
+
+                        view.addSubview(skipButton)
+                        print(#function)
+                    default:
+                        print("No text needed")
+                }
+                
+                let position = Position(left: 0.7, top: 0.55)
+                
+                return Content(view: view, position: position)
         }
         
         var slides = [SlideController]()
@@ -136,6 +212,7 @@ class OnboardingViewController: PresentationController {
             controller.add(animations: [Content.centerTransition(forSlideContent: titles[index])])
             slides.append(controller)
         }
+        
         
         add(slides)
     }
@@ -185,15 +262,105 @@ class OnboardingViewController: PresentationController {
         contents.append(groundContent)
         addToBackground([groundContent])
     }
+    
+    private func showLightAwesomePopupMessage(attributes: EKAttributes) {
+        let image = UIImage(named: "ic_done_all_light_48pt")!
+        let title = "Awesome!"
+        let description = "You've successfully entered your email!"
+        showPopupMessage(attributes: attributes, title: title, titleColor: .white, description: description, descriptionColor: .white, buttonTitleColor: EKColor.Gray.mid, buttonBackgroundColor: .white, image: image)
+    }
 
     
-
+    private func showPopupMessage(attributes: EKAttributes, title: String, titleColor: UIColor, description: String, descriptionColor: UIColor, buttonTitleColor: UIColor, buttonBackgroundColor: UIColor, image: UIImage? = nil) {
+        
+        var themeImage: EKPopUpMessage.ThemeImage?
+        
+        if let image = image {
+            themeImage = .init(image: .init(image: image, size: CGSize(width: 60, height: 60), contentMode: .scaleAspectFit))
+        }
+        
+        let title = EKProperty.LabelContent(text: title, style: .init(font: MainFont.medium.with(size: 24), color: titleColor, alignment: .center))
+        let description = EKProperty.LabelContent(text: description, style: .init(font: MainFont.light.with(size: 16), color: descriptionColor, alignment: .center))
+        let button = EKProperty.ButtonContent(label: .init(text: "Got it!", style: .init(font: MainFont.bold.with(size: 16), color: buttonTitleColor)), backgroundColor: buttonBackgroundColor, highlightedBackgroundColor: buttonTitleColor.withAlphaComponent(0.05))
+        let message = EKPopUpMessage(themeImage: themeImage, title: title, description: description, button: button) {
+            SwiftEntryKit.dismiss()
+        }
+        
+        let contentView = EKPopUpMessageView(with: message)
+        SwiftEntryKit.display(entry: contentView, using: attributes)
+    }
     
+    
+    @objc func buttonAction(sender: UIButton!) {
+        print("Button tapped")
+    }
+
     
     public func goToEventSearchView() {
-        
         print(#function)
+    }
+    
+    private func configureMultipleChoice( dy : CGFloat, answers : [String], isSingleTap: Bool) -> JoTagView
+    {
+        let ratio: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 1 : 0.6
+        // height value is not matter, you can input any value
+        let tagView = JoTagView(frame: CGRect(x: 0, y: dy, width: 550 * ratio, height: 0))
         
+        tagView.numberOfRow = 1
+        tagView.isTagCanTouch = true
+        tagView.isNeedFlipColor = true
+        
+        /// If u need call back
+        tagView.delegate = self
+        tagView.dataSource = answers
+        tagView.isSingleTap = isSingleTap
+        
+        /// Important!!
+        /// Property must set befor you setupTagView, Otherwise it setup with default property value
+        tagView.setupTagView()
+        
+        return tagView
+        
+//        self.contentView.addSubview(tagView!)
+//
+//        /// Get Tag View Height
+//        contentViewHeight.constant = CGFloat((tagView?.getContentViewHeight())!)
+//
+//        contentHeightLab.text = "Tag Content View Height: " + String((tagView?.getContentViewHeight())!)
+
+    }
+    
+    // MARK: UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
+        textField.resignFirstResponder()
+        return true
+    }
+
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        print("Editing ended")
+        
+        switch textField.tag {
+        case 1:
+            username = textField.text ?? ""
+            print(username)
+            if username != "" {
+                //            self.dataSource = nil
+                //            self.dataSource = self
+                removeAllSlides()
+                configureSlides()
+                moveForward()
+                
+            }
+        case 2:
+            if textField.text != "" {
+                showLightAwesomePopupMessage(attributes: attributes!)
+            }
+        default:
+            print(textField.text ?? "")
+        }
+
     }
 
     
@@ -204,20 +371,6 @@ extension OnboardingViewController {
     @IBAction func skipButtonTapped(_: UIButton) {
         
         print(#function)
-        
-//        let viewControllerStoryboardId = "OnboardingViewController"
-//        let storyboardName = "Main"
-//        let storyboard = UIStoryboard(name: storyboardName, bundle: Bundle.main)
-//        let onboardingViewController = storyboard.instantiateViewController(withIdentifier: viewControllerStoryboardId)
-//        object_setClass(onboardingViewController, OnboardingViewController.self)
-//
-//        let transitionDelegate = SPStorkTransitioningDelegate()
-//        transitionDelegate.storkDelegate = self
-//        transitionDelegate.confirmDelegate = onboardingViewController as? SPStorkControllerConfirmDelegate
-//        onboardingViewController.transitioningDelegate = transitionDelegate
-//        onboardingViewController.modalPresentationStyle = .custom
-//
-//        present(onboardingViewController, animated: true, completion: nil)
         
     }
     
@@ -234,6 +387,13 @@ extension OnboardingViewController: SPStorkControllerDelegate {
     
     func didDismissStorkBySwipe() {
         print("SPStorkControllerDelegate - didDismissStorkBySwipe")
+    }
+}
+
+//MARK: JoTagViewDelegate
+extension OnboardingViewController: JoTagViewDelegate {
+    func didSelectTag(sender: UIButton, index: Int) {
+        print("Select Tag: " + (sender.currentTitle ?? "No Data"))
     }
 }
 

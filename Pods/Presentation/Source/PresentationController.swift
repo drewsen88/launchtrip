@@ -121,7 +121,15 @@ open class PresentationController: PagesController {
       slides.append(controller)
     }
     super.add(viewControllers)
+
   }
+    
+  public func removeAllSlides()
+  {
+    print(#function)
+    super.removeAllPages()
+  }
+    
 
   public func addToBackground(_ elements: [Content]) {
     for content in elements {

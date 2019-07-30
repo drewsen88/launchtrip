@@ -15,6 +15,7 @@
 		5040ACDF22C3E977000F73E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5040ACDD22C3E977000F73E4 /* LaunchScreen.storyboard */; };
 		5040ACEA22C3E977000F73E4 /* LaunchtripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040ACE922C3E977000F73E4 /* LaunchtripTests.swift */; };
 		5040ACF522C3E977000F73E4 /* LaunchtripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040ACF422C3E977000F73E4 /* LaunchtripUITests.swift */; };
+		508E369622EFF3010007922D /* JoTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E369522EFF3010007922D /* JoTagView.swift */; };
 		50AEDE2222DCED3200EFF185 /* ExampleQuestions.json in Resources */ = {isa = PBXBuildFile; fileRef = 50AEDE2122DCED3200EFF185 /* ExampleQuestions.json */; };
 		50AEDE2822DCF86A00EFF185 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AEDE2722DCF86A00EFF185 /* OnboardingViewController.swift */; };
 		50BECB6C22CF88A400146AE6 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BECB6822CF88A400146AE6 /* OpenSans-Regular.ttf */; };
@@ -61,6 +62,7 @@
 		5040ACF022C3E977000F73E4 /* LaunchtripUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaunchtripUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5040ACF422C3E977000F73E4 /* LaunchtripUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchtripUITests.swift; sourceTree = "<group>"; };
 		5040ACF622C3E977000F73E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		508E369522EFF3010007922D /* JoTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoTagView.swift; sourceTree = "<group>"; };
 		50AEDE2122DCED3200EFF185 /* ExampleQuestions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ExampleQuestions.json; sourceTree = "<group>"; };
 		50AEDE2722DCF86A00EFF185 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		50BECB6822CF88A400146AE6 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -201,6 +203,7 @@
 		50F9A8CD22E1434400A9337E /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				508E369522EFF3010007922D /* JoTagView.swift */,
 				50F9A8CE22E143B200A9337E /* UIColor+Utils.swift */,
 				50F9A8CB22E1433D00A9337E /* Font.swift */,
 			);
@@ -459,6 +462,7 @@
 			files = (
 				50F9A8C922E13A3300A9337E /* SPFakeBarNavigationStyle.swift in Sources */,
 				50F9A8CC22E1433D00A9337E /* Font.swift in Sources */,
+				508E369622EFF3010007922D /* JoTagView.swift in Sources */,
 				50F9A8C822E13A3300A9337E /* SPFakeBarView.swift in Sources */,
 				50101DC022CF8D5600661531 /* Images.swift in Sources */,
 				50AEDE2822DCF86A00EFF185 /* OnboardingViewController.swift in Sources */,

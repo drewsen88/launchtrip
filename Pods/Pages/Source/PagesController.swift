@@ -123,6 +123,13 @@ import UIKit
       addViewController(viewController)
     }
   }
+    
+  open func removeAllPages()
+  {
+    removeAllViewControllers()
+
+  }
+    
 }
 
 // MARK: - UIPageViewControllerDataSource
@@ -215,6 +222,12 @@ private extension PagesController {
       }
     }
   }
+
+ func removeAllViewControllers()
+ {
+    pages.removeAll()
+    print(pages.count)
+ }
 
   func addConstraints() {
     view.addConstraint(NSLayoutConstraint(item: bottomLineView, attribute: .bottom,
