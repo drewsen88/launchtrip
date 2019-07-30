@@ -10,6 +10,7 @@ import UIKit
 
 @objc protocol JoTagViewDelegate {
     @objc optional func didSelectTag(sender: UIButton, index: Int)
+    @objc optional func didSelectSingleTag(sender: UIButton, index: Int)
 }
 
 class JoTagView: UIView {
@@ -175,6 +176,10 @@ extension JoTagView {
         }
         if delegate != nil {
             delegate?.didSelectTag!(sender: sender, index: sender.tag)
+            
+            if isSingleTap{
+                delegate?.didSelectSingleTag?(sender: sender, index: sender.tag)
+            }
         }
         lastTapBtn = sender
     }

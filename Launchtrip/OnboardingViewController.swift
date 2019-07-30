@@ -16,7 +16,8 @@ import SwiftEntryKit
 class OnboardingViewController: PresentationController, UITextFieldDelegate {
     
     var attributes: EKAttributes! = nil
-
+    var skipEmail : Bool = false
+    
     private struct BackgroundImage {
         let name: String
         let left: CGFloat
@@ -73,6 +74,15 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
         return rightButton
     }()
     
+    private func createEnterButton() -> UIButton{
+        let enterButton = UIButton(type: .roundedRect)
+        enterButton.backgroundColor = .white
+        enterButton.setTitle("Enter", for: .normal)
+        enterButton.addTarget(self, action:#selector(enterButtonAction), for: .touchUpInside)
+        
+        return enterButton
+    }
+    
     private func setupPopupAttributes() {
         attributes = EKAttributes.centerFloat
         attributes.hapticFeedbackType = .success
@@ -100,6 +110,7 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
     private lazy var username: String = ""
     
     private var skipButton: UIButton!
+    
     @IBOutlet weak var eventSearchView: UIView!
         
     
@@ -118,7 +129,6 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
         
         setNavigationTitle = false
         navigationItem.leftBarButtonItem = leftButton
-        navigationItem.rightBarButtonItem = rightButton
         view.backgroundColor = UIColor(hex: "FFBC00")
         
         setupPopupAttributes()
@@ -168,6 +178,11 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
                         nameTextField.delegate = self
                         nameTextField.tag = 1
                         view.addSubview(nameTextField)
+                        let nameEnterButton = createEnterButton()
+                        nameEnterButton.frame = CGRect(x: 0, y: nameTextField.frame.origin.y + nameTextField.frame.size.height + 30, width: label.frame.size.width, height: 40)
+                        nameEnterButton.layer.cornerRadius = 5
+                        nameEnterButton.tag = 1
+                        view.addSubview(nameEnterButton)
                         view.bringSubviewToFront(nameTextField)
                     case 2:
                         let tagView = configureMultipleChoice(dy: label.frame.origin.y + label.frame.size.height, answers: ["ans1","ans2","ans3","ans4"], isSingleTap: true)
@@ -178,6 +193,11 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
                         view.addSubview(tagView)
                     case 4:
                         let tagView = configureMultipleChoice(dy: label.frame.size.height, answers: ["Michelin Starred","ans2","ans3","ans4", "ans5"], isSingleTap: false)
+                        let multiAnswerButton = createEnterButton()
+                        multiAnswerButton.frame = CGRect(x: 0, y: tagView.frame.origin.y + tagView.frame.size.height + 20, width: label.frame.size.width, height: 40)
+                        multiAnswerButton.layer.cornerRadius = 5
+                        multiAnswerButton.tag = 4
+                        view.addSubview(multiAnswerButton)
                         view.addSubview(tagView)
                     case 5:
                         emailTextField = UITextField(frame: CGRect(x: 0, y: label.frame.origin.y + label.frame.size.height, width: label.frame.size.width, height: 40))
@@ -193,8 +213,13 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
                         skipButton.layer.cornerRadius = 10
                         skipButton.setTitle("Skip", for: [])
                         skipButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-
+                        skipButton.tag = 1
                         view.addSubview(skipButton)
+                        let emailEnterButton = createEnterButton()
+                        emailEnterButton.frame = CGRect(x: view.center.x - label.frame.size.width/2, y: emailTextField.frame.origin.y + emailTextField.frame.size.height + 30, width: label.frame.size.width, height: 40)
+                        emailEnterButton.layer.cornerRadius = 5
+                        emailEnterButton.tag = 5
+                        view.addSubview(emailEnterButton)
                         print(#function)
                     case 6:
                         let startTripButton = UIButton(frame: CGRect(x: 0, y: label.frame.origin.y +  label.frame.size.height, width: view.frame.size.width, height: 50))
@@ -203,7 +228,7 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
                         startTripButton.layer.cornerRadius = 10
                         startTripButton.setTitle("Start Trip", for: [])
                         startTripButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-                        
+                        startTripButton.tag = 2
                         view.addSubview(startTripButton)
 
                     default:
@@ -303,8 +328,42 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
     
     
     @objc func buttonAction(sender: UIButton!) {
-        print("Button tapped")
+        switch sender.tag {
+        case 1:
+            // Skip email button
+            skipEmail = true
+            moveForward()
+        case 2:
+            // Start trip button
+            print("Start trip button tapped")
+        case 3:
+            // Enter button
+//            moveForward()
+            print(#function)
+        default:
+            print("Button tapped")
+        }
     }
+    
+    @objc func enterButtonAction(sender: UIButton!) {
+        switch sender.tag {
+        case 1:
+            // enter name button
+            moveForward()
+        case 4:
+            // Start trip button
+            print("Start trip button tapped")
+            moveForward()
+        case 5:
+            // Email Enter button
+            //            moveForward()
+            emailTextField.resignFirstResponder()
+            print(#function)
+        default:
+            print("Enter Button tapped")
+        }
+    }
+
 
     
     public func goToEventSearchView() {
@@ -332,13 +391,6 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
         
         return tagView
         
-//        self.contentView.addSubview(tagView!)
-//
-//        /// Get Tag View Height
-//        contentViewHeight.constant = CGFloat((tagView?.getContentViewHeight())!)
-//
-//        contentHeightLab.text = "Tag Content View Height: " + String((tagView?.getContentViewHeight())!)
-
     }
     
     // MARK: UITextFieldDelegate
@@ -357,15 +409,13 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
             username = textField.text ?? ""
             print(username)
             if username != "" {
-                //            self.dataSource = nil
-                //            self.dataSource = self
+                
                 removeAllSlides()
                 configureSlides()
                 moveForward()
-                
             }
         case 2:
-            if textField.text != "" {
+            if textField.text != "" && !skipEmail {
                 showLightAwesomePopupMessage(attributes: attributes!)
             }
         default:
@@ -380,11 +430,8 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
 extension OnboardingViewController {
     
     @IBAction func skipButtonTapped(_: UIButton) {
-        
         print(#function)
-        
     }
-    
     
 }
 
@@ -405,6 +452,15 @@ extension OnboardingViewController: SPStorkControllerDelegate {
 extension OnboardingViewController: JoTagViewDelegate {
     func didSelectTag(sender: UIButton, index: Int) {
         print("Select Tag: " + (sender.currentTitle ?? "No Data"))
+    }
+    
+    func didSelectSingleTag(sender: UIButton, index: Int) {
+        print("Select Tag: " + (sender.currentTitle ?? "No Data"))
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4, execute: {
+            self.moveForward()
+        })
+
     }
 }
 
