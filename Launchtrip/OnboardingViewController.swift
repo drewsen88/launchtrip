@@ -12,6 +12,7 @@ import SPStorkController
 import Hue
 import Presentation
 import SwiftEntryKit
+import CoreData
 
 class OnboardingViewController: PresentationController, UITextFieldDelegate {
     
@@ -77,6 +78,9 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
     private func createEnterButton() -> UIButton{
         let enterButton = UIButton(type: .roundedRect)
         enterButton.backgroundColor = .white
+        enterButton.layer.cornerRadius = 20
+        enterButton.alpha = 0.80
+        enterButton.setTitleColor(.black, for: .normal)
         enterButton.setTitle("Enter", for: .normal)
         enterButton.addTarget(self, action:#selector(enterButtonAction), for: .touchUpInside)
         
@@ -107,7 +111,7 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
     private var nameTextField : UITextField!
     private var emailTextField : UITextField!
 
-    private lazy var username: String = ""
+    private lazy var firstName: String = ""
     
     private var skipButton: UIButton!
     
@@ -156,11 +160,11 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
         let titles = [
             "Welcome to Launchtrip \n \n We'd like to ask you 5 questions to get know you! \n \n Let's get Started",
             "Let's start off with your name:",
-            "Tell us a bit about yourself, " + username + ", so we can create a better experience for you \n \n Hotel Type?",
+            "Tell us a bit about yourself, " + firstName + ", so we can create a better experience for you \n \n Hotel Type?",
             "What do you prioritize when booking a hotel?",
             "What bests fits your dining style? \n \n (Select all that apply)",
             "Thanks! Lastly please enter your email to help us store your preferences",
-            "All set " + username + ", we'll use your choices to help build the best experience"].enumerated().map { (index, title) -> Content in
+            "All set " + firstName + ", we'll use your choices to help build the best experience"].enumerated().map { (index, title) -> Content in
                 let view = UIView(frame: CGRect(x: 0, y: 0, width: 550 * ratio, height: (300 * ratio) + 400))
                 view.isUserInteractionEnabled = true
                 let label = UILabel(frame: CGRect(x: 0, y: 50, width: view.frame.size.width, height: 300 * ratio))
@@ -335,6 +339,23 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
             moveForward()
         case 2:
             // Start trip button
+            
+            // Save user entity here
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "User", in: context)
+            let newUser = NSManagedObject(entity: entity!, insertInto: context)
+            
+            newUser.setValue(firstName, forKey: "firstName")
+            newUser.setValue("email", forKey: "email")
+            newUser.setValue("hotelPriority", forKey: "hotelPriority")
+            newUser.setValue("hotelType", forKey: "hotelType")
+            
+            do {
+                try context.save()
+            } catch {
+                print("Failed saving")
+            }
             print("Start trip button tapped")
         case 3:
             // Enter button
@@ -406,9 +427,9 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
         
         switch textField.tag {
         case 1:
-            username = textField.text ?? ""
-            print(username)
-            if username != "" {
+            firstName = textField.text ?? ""
+            print(firstName)
+            if firstName != "" {
                 
                 removeAllSlides()
                 configureSlides()

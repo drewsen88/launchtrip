@@ -16,6 +16,8 @@
 		5040ACEA22C3E977000F73E4 /* LaunchtripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040ACE922C3E977000F73E4 /* LaunchtripTests.swift */; };
 		5040ACF522C3E977000F73E4 /* LaunchtripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040ACF422C3E977000F73E4 /* LaunchtripUITests.swift */; };
 		508E369622EFF3010007922D /* JoTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E369522EFF3010007922D /* JoTagView.swift */; };
+		508F305522F10038008EDD1C /* UserDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 508F305322F10038008EDD1C /* UserDataModel.xcdatamodeld */; };
+		508F305722F10264008EDD1C /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508F305622F10264008EDD1C /* DataController.swift */; };
 		50AEDE2222DCED3200EFF185 /* ExampleQuestions.json in Resources */ = {isa = PBXBuildFile; fileRef = 50AEDE2122DCED3200EFF185 /* ExampleQuestions.json */; };
 		50AEDE2822DCF86A00EFF185 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AEDE2722DCF86A00EFF185 /* OnboardingViewController.swift */; };
 		50BECB6C22CF88A400146AE6 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50BECB6822CF88A400146AE6 /* OpenSans-Regular.ttf */; };
@@ -63,6 +65,8 @@
 		5040ACF422C3E977000F73E4 /* LaunchtripUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchtripUITests.swift; sourceTree = "<group>"; };
 		5040ACF622C3E977000F73E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		508E369522EFF3010007922D /* JoTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoTagView.swift; sourceTree = "<group>"; };
+		508F305422F10038008EDD1C /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
+		508F305622F10264008EDD1C /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		50AEDE2122DCED3200EFF185 /* ExampleQuestions.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ExampleQuestions.json; sourceTree = "<group>"; };
 		50AEDE2722DCF86A00EFF185 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		50BECB6822CF88A400146AE6 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -153,6 +157,8 @@
 				50AEDE2122DCED3200EFF185 /* ExampleQuestions.json */,
 				5040ACD422C3E975000F73E4 /* AppDelegate.swift */,
 				50AEDE2722DCF86A00EFF185 /* OnboardingViewController.swift */,
+				508F305322F10038008EDD1C /* UserDataModel.xcdatamodeld */,
+				508F305622F10264008EDD1C /* DataController.swift */,
 				5040ACD822C3E975000F73E4 /* Main.storyboard */,
 				5040ACDB22C3E977000F73E4 /* Assets.xcassets */,
 				5040ACDD22C3E977000F73E4 /* LaunchScreen.storyboard */,
@@ -465,7 +471,9 @@
 				508E369622EFF3010007922D /* JoTagView.swift in Sources */,
 				50F9A8C822E13A3300A9337E /* SPFakeBarView.swift in Sources */,
 				50101DC022CF8D5600661531 /* Images.swift in Sources */,
+				508F305722F10264008EDD1C /* DataController.swift in Sources */,
 				50AEDE2822DCF86A00EFF185 /* OnboardingViewController.swift in Sources */,
+				508F305522F10038008EDD1C /* UserDataModel.xcdatamodeld in Sources */,
 				5040ACD522C3E975000F73E4 /* AppDelegate.swift in Sources */,
 				50F9A8CF22E143B200A9337E /* UIColor+Utils.swift in Sources */,
 			);
@@ -802,6 +810,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		508F305322F10038008EDD1C /* UserDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				508F305422F10038008EDD1C /* User.xcdatamodel */,
+			);
+			currentVersion = 508F305422F10038008EDD1C /* User.xcdatamodel */;
+			path = UserDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 5040ACC922C3E975000F73E4 /* Project object */;
 }
