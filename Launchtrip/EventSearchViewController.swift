@@ -297,7 +297,7 @@ extension EventSearchViewController: MKMapViewDelegate {
         if placemarkSelected {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { [weak self] in
-                let eventCollectionViewController = TodayCollectionViewController()
+                let eventCollectionViewController = EventCollectionViewController()
                 if let navigator = self?.navigationController {
                     navigator.pushViewController(eventCollectionViewController, animated: true)
                 }

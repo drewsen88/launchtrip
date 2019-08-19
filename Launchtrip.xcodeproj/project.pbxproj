@@ -40,13 +40,13 @@
 		50AA0446230A8A8600922486 /* NSLayoutConstraint + Multiplier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA0443230A8A8500922486 /* NSLayoutConstraint + Multiplier.swift */; };
 		50AA0447230A8A8600922486 /* UICollectionView + OrderedCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA0444230A8A8500922486 /* UICollectionView + OrderedCells.swift */; };
 		50AA0448230A8A8600922486 /* UIWindow + SafeArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA0445230A8A8500922486 /* UIWindow + SafeArea.swift */; };
-		50AA044B230A8B5200922486 /* AppDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA044A230A8B5200922486 /* AppDetailViewController.swift */; };
-		50AA044E230A8B5E00922486 /* AppDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50AA044C230A8B5E00922486 /* AppDetailViewController.xib */; };
-		50AA044F230A8B5E00922486 /* TodayCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA044D230A8B5E00922486 /* TodayCollectionViewController.swift */; };
+		50AA044B230A8B5200922486 /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA044A230A8B5200922486 /* EventDetailViewController.swift */; };
+		50AA044E230A8B5E00922486 /* EventDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50AA044C230A8B5E00922486 /* EventDetailViewController.xib */; };
+		50AA044F230A8B5E00922486 /* EventCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA044D230A8B5E00922486 /* EventCollectionViewController.swift */; };
 		50AA0453230A8BB900922486 /* ShadowStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA0451230A8BB900922486 /* ShadowStyle.swift */; };
 		50AA0454230A8BB900922486 /* UIView + ShadowStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA0452230A8BB900922486 /* UIView + ShadowStyle.swift */; };
-		50AA0458230A8C0A00922486 /* TodayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA0456230A8C0A00922486 /* TodayCollectionViewCell.swift */; };
-		50AA0459230A8C0A00922486 /* TodayCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50AA0457230A8C0A00922486 /* TodayCollectionViewCell.xib */; };
+		50AA0458230A8C0A00922486 /* EventCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA0456230A8C0A00922486 /* EventCollectionViewCell.swift */; };
+		50AA0459230A8C0A00922486 /* EventCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50AA0457230A8C0A00922486 /* EventCollectionViewCell.xib */; };
 		50AA045E230A931900922486 /* CircularImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA045B230A931900922486 /* CircularImageView.swift */; };
 		50AA045F230A931900922486 /* iOSIconImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA045C230A931900922486 /* iOSIconImageView.swift */; };
 		50AA0460230A931900922486 /* RoundCornersButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50AA045D230A931900922486 /* RoundCornersButton.swift */; };
@@ -120,13 +120,13 @@
 		50AA0443230A8A8500922486 /* NSLayoutConstraint + Multiplier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSLayoutConstraint + Multiplier.swift"; sourceTree = "<group>"; };
 		50AA0444230A8A8500922486 /* UICollectionView + OrderedCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView + OrderedCells.swift"; sourceTree = "<group>"; };
 		50AA0445230A8A8500922486 /* UIWindow + SafeArea.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIWindow + SafeArea.swift"; sourceTree = "<group>"; };
-		50AA044A230A8B5200922486 /* AppDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDetailViewController.swift; sourceTree = "<group>"; };
-		50AA044C230A8B5E00922486 /* AppDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AppDetailViewController.xib; sourceTree = "<group>"; };
-		50AA044D230A8B5E00922486 /* TodayCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewController.swift; sourceTree = "<group>"; };
+		50AA044A230A8B5200922486 /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		50AA044C230A8B5E00922486 /* EventDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventDetailViewController.xib; sourceTree = "<group>"; };
+		50AA044D230A8B5E00922486 /* EventCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCollectionViewController.swift; sourceTree = "<group>"; };
 		50AA0451230A8BB900922486 /* ShadowStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShadowStyle.swift; sourceTree = "<group>"; };
 		50AA0452230A8BB900922486 /* UIView + ShadowStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView + ShadowStyle.swift"; sourceTree = "<group>"; };
-		50AA0456230A8C0A00922486 /* TodayCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCollectionViewCell.swift; sourceTree = "<group>"; };
-		50AA0457230A8C0A00922486 /* TodayCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TodayCollectionViewCell.xib; sourceTree = "<group>"; };
+		50AA0456230A8C0A00922486 /* EventCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventCollectionViewCell.swift; sourceTree = "<group>"; };
+		50AA0457230A8C0A00922486 /* EventCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EventCollectionViewCell.xib; sourceTree = "<group>"; };
 		50AA045B230A931900922486 /* CircularImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularImageView.swift; sourceTree = "<group>"; };
 		50AA045C230A931900922486 /* iOSIconImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iOSIconImageView.swift; sourceTree = "<group>"; };
 		50AA045D230A931900922486 /* RoundCornersButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundCornersButton.swift; sourceTree = "<group>"; };
@@ -317,9 +317,9 @@
 		50AA0450230A8B6400922486 /* Today - Events */ = {
 			isa = PBXGroup;
 			children = (
-				50AA044C230A8B5E00922486 /* AppDetailViewController.xib */,
-				50AA044D230A8B5E00922486 /* TodayCollectionViewController.swift */,
-				50AA044A230A8B5200922486 /* AppDetailViewController.swift */,
+				50AA044C230A8B5E00922486 /* EventDetailViewController.xib */,
+				50AA044D230A8B5E00922486 /* EventCollectionViewController.swift */,
+				50AA044A230A8B5200922486 /* EventDetailViewController.swift */,
 			);
 			path = "Today - Events";
 			sourceTree = "<group>";
@@ -336,8 +336,8 @@
 		50AA045A230A8C1000922486 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				50AA0456230A8C0A00922486 /* TodayCollectionViewCell.swift */,
-				50AA0457230A8C0A00922486 /* TodayCollectionViewCell.xib */,
+				50AA0456230A8C0A00922486 /* EventCollectionViewCell.swift */,
+				50AA0457230A8C0A00922486 /* EventCollectionViewCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -510,7 +510,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50BECB6D22CF88A400146AE6 /* Nunito-Regular.ttf in Resources */,
-				50AA044E230A8B5E00922486 /* AppDetailViewController.xib in Resources */,
+				50AA044E230A8B5E00922486 /* EventDetailViewController.xib in Resources */,
 				50AA040E230A2EAA00922486 /* Roboto-Regular.ttf in Resources */,
 				50AA043A230A85EE00922486 /* CardView.xib in Resources */,
 				50BECB6F22CF88A400146AE6 /* Nunito-Light.ttf in Resources */,
@@ -519,7 +519,7 @@
 				5040ACDF22C3E977000F73E4 /* LaunchScreen.storyboard in Resources */,
 				5040ACDC22C3E977000F73E4 /* Assets.xcassets in Resources */,
 				50AEDE2222DCED3200EFF185 /* ExampleQuestions.json in Resources */,
-				50AA0459230A8C0A00922486 /* TodayCollectionViewCell.xib in Resources */,
+				50AA0459230A8C0A00922486 /* EventCollectionViewCell.xib in Resources */,
 				50BECB6C22CF88A400146AE6 /* OpenSans-Regular.ttf in Resources */,
 				50BECB6E22CF88A400146AE6 /* Nunito-Bold.ttf in Resources */,
 				5040ACDA22C3E975000F73E4 /* Main.storyboard in Resources */,
@@ -636,7 +636,7 @@
 				50AA0441230A873F00922486 /* ReusableCells.swift in Sources */,
 				50F9A8C922E13A3300A9337E /* SPFakeBarNavigationStyle.swift in Sources */,
 				50AA043C230A85EE00922486 /* CardViewDelegate.swift in Sources */,
-				50AA044B230A8B5200922486 /* AppDetailViewController.swift in Sources */,
+				50AA044B230A8B5200922486 /* EventDetailViewController.swift in Sources */,
 				50AA0424230A2F3000922486 /* RippleLayer.swift in Sources */,
 				50AA0447230A8A8600922486 /* UICollectionView + OrderedCells.swift in Sources */,
 				50AA0448230A8A8600922486 /* UIWindow + SafeArea.swift in Sources */,
@@ -652,13 +652,13 @@
 				50AA0414230A2ED600922486 /* AnimHelper.swift in Sources */,
 				50AA0454230A8BB900922486 /* UIView + ShadowStyle.swift in Sources */,
 				50AA042C230A2FAA00922486 /* MaterialTextField.swift in Sources */,
-				50AA0458230A8C0A00922486 /* TodayCollectionViewCell.swift in Sources */,
+				50AA0458230A8C0A00922486 /* EventCollectionViewCell.swift in Sources */,
 				50AA045F230A931900922486 /* iOSIconImageView.swift in Sources */,
 				50AA0446230A8A8600922486 /* NSLayoutConstraint + Multiplier.swift in Sources */,
 				50AA0453230A8BB900922486 /* ShadowStyle.swift in Sources */,
 				50AA0415230A2ED600922486 /* SearchResultsView.swift in Sources */,
 				50AA0440230A873F00922486 /* NibLoadbleView.swift in Sources */,
-				50AA044F230A8B5E00922486 /* TodayCollectionViewController.swift in Sources */,
+				50AA044F230A8B5E00922486 /* EventCollectionViewController.swift in Sources */,
 				50AEDE2822DCF86A00EFF185 /* OnboardingViewController.swift in Sources */,
 				50AA0425230A2F3000922486 /* MaterialTableViewCell.swift in Sources */,
 				50AA0431230A310A00922486 /* ResManager.swift in Sources */,
