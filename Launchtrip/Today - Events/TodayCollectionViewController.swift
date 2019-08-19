@@ -39,6 +39,8 @@ class TodayCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(TodayCollectionViewCell.self)
+        self.navigationController?.navigationBar.topItem?.title = ""
+        self.navigationController?.navigationBar.tintColor = .black
     }
 
     override func viewWillAppear(_ animated: Bool) {
