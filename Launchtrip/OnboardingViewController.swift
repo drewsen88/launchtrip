@@ -116,7 +116,11 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
     private var skipButton: UIButton!
     
     @IBOutlet weak var eventSearchView: UIView!
-        
+    
+    enum SegueIndentifier: String {
+        case showDetail = "showDetail"
+    }
+
     
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -356,7 +360,16 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
             } catch {
                 print("Failed saving")
             }
-            print("Start trip button tapped")
+            print("Start trip button tapped for real")
+            appDelegate.setupLocationManager()
+
+            if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EventSearch") as? EventSearchViewController {
+                if let navigator = navigationController {
+                    navigator.pushViewController(viewController, animated: true)
+                }
+            }
+
+            
         case 3:
             // Enter button
 //            moveForward()
@@ -372,8 +385,7 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
             // enter name button
             moveForward()
         case 4:
-            // Start trip button
-            print("Start trip button tapped")
+            //multiple choice answer
             moveForward()
         case 5:
             // Email Enter button
@@ -444,6 +456,19 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
         }
 
     }
+    
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard let identString = segue.identifier, let identifier = SegueIdentifier(rawValue: identString) else {
+//            super.prepare(for: segue, sender: sender)
+//            return
+//        }
+//        switch identifier {
+//        case .showDetail:
+//            //Show view controller here
+//        }
+//    }
+
 
     
 }
@@ -455,6 +480,7 @@ extension OnboardingViewController {
     }
     
 }
+
 
 // MARK: SPStorkControllerDelegate
 

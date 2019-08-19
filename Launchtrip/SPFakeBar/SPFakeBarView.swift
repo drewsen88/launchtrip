@@ -83,6 +83,7 @@ open class SPFakeBarView: UIView {
     }()
     
     private var titleBottomConstraint: NSLayoutConstraint?
+    //
     private var heightConstraint: NSLayoutConstraint?
     private var topConstraint: NSLayoutConstraint?
     private var leadingConstraint: NSLayoutConstraint?

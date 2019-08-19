@@ -44,39 +44,46 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" id="FE6-I4-nS1"/>
+                    <connections>
+                        <segue destination="U7G-ds-DFJ" kind="presentation" identifier="eventSearch" id="sky-Nu-esh"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="238" y="119"/>
+            <point key="canvasLocation" x="-29" y="131"/>
         </scene>
-        <!--View Controller-->
+        <!--Event Search View Controller-->
         <scene sceneID="onn-16-6MX">
             <objects>
-                <viewController storyboardIdentifier="EventSearchViewController" modalPresentationStyle="overCurrentContext" id="U7G-ds-DFJ" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventSearch" modalPresentationStyle="overCurrentContext" id="U7G-ds-DFJ" customClass="EventSearchViewController" customModule="Launchtrip" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cn7-jJ-QuI">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Event Search" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lkV-y1-ZKg">
-                                <rect key="frame" x="131" y="44" width="184" height="52"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="27"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="lkV-y1-ZKg" firstAttribute="top" secondItem="FZ4-a6-D5o" secondAttribute="top" id="1WT-bZ-G4R"/>
-                            <constraint firstItem="FZ4-a6-D5o" firstAttribute="bottom" secondItem="lkV-y1-ZKg" secondAttribute="bottom" constant="766" id="CoT-B8-GpK"/>
-                            <constraint firstItem="FZ4-a6-D5o" firstAttribute="trailing" secondItem="lkV-y1-ZKg" secondAttribute="trailing" constant="99" id="Z4K-lG-UjF"/>
-                            <constraint firstItem="lkV-y1-ZKg" firstAttribute="leading" secondItem="FZ4-a6-D5o" secondAttribute="leading" constant="131" id="l28-Hb-2LZ"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="FZ4-a6-D5o"/>
                     </view>
+                    <connections>
+                        <segue destination="Po4-tZ-eOn" kind="presentation" id="wwX-um-rv9"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Vc-PL-Aqw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1840.5797101449277" y="118.52678571428571"/>
+            <point key="canvasLocation" x="813.04347826086962" y="130.58035714285714"/>
+        </scene>
+        <!--Today Collection View Controller-->
+        <scene sceneID="O8k-2K-0WO">
+            <objects>
+                <viewController storyboardIdentifier="EventCollection" id="Po4-tZ-eOn" customClass="TodayCollectionViewController" customModule="Launchtrip" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Kcw-Wi-aon">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="3sA-zk-CjO"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0RW-qD-RfN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1635" y="132"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OEq-5z-Zfn">

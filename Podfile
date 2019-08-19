@@ -13,7 +13,8 @@ target 'Launchtrip' do
   pod 'Firebase/Analytics'
   pod 'Presentation'
   pod 'Hue'
-  
+  pod 'EasyTransitions'
+
   target 'LaunchtripTests' do
     inherit! :search_paths
     # Pods for testing

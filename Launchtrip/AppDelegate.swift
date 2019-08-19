@@ -9,14 +9,17 @@
 import UIKit
 import Firebase
 import CoreData
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    
+    private let LOGTAG = "[AppDelegate] "
     
 
     var window: UIWindow?
-    
+    var latestLocation: CLLocation?
+    var locationMgr = CLLocationManager()
+
     private lazy var navigationController: UINavigationController = .init(
         rootViewController: self.presentationController
     )
@@ -43,7 +46,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
-
+        
 
         return true
     }
@@ -116,9 +119,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    /**
+     Set up location manager.
+     */
+    func setupLocationManager() {
+        locationMgr.allowsBackgroundLocationUpdates = true
+        locationMgr.delegate = self
+        locationMgr.startUpdatingLocation()
+    }
 
 
 }
+
+// MARK: - CLLocationManagerDelegate
+extension AppDelegate: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        latestLocation = locations.last != nil ? locations.last! : latestLocation
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("\(self.LOGTAG) didFailWithError \(error)")
+    }
+}
+
 
 // MARK: UIApplication extensions
 
