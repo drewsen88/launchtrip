@@ -8,10 +8,12 @@
 
 import UIKit
 import MapKit
+import SwiftEntryKit
 
 class EventSearchViewController: UIViewController {
     
-    private var placemarkSelected : Bool = false
+    private var placemarkSelected: Bool = false
+    var attributes: EKAttributes! = nil
     
     // MARK: - UI widgets
     private var greeting: UITextView!
@@ -25,17 +27,21 @@ class EventSearchViewController: UIViewController {
     private let animHplr = AnimHelper.shared
     // viewDidLoad
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         dim = self.view.frame.size
         initUI()
         requestPermission()
         btnLocate.addTarget(self, action: #selector(tapLocate), for: .touchUpInside)
+        
     }
     /**
      Init UI.
      */
     private func initUI() {
         self.view.backgroundColor = ResManager.Colors.sand
+        
+        setUpErrorPopupAttributes()
         
         maskView = UIImageView()
         maskView.backgroundColor = .white
@@ -74,6 +80,22 @@ class EventSearchViewController: UIViewController {
         )
         self.view.addSubViews([mapView, btnLocate, maskView, searchResultsView, searchbar, greeting])
         self.navigationItem.setHidesBackButton(true, animated:true)
+    }
+    
+    // Bumps a notification structured entry
+    private func showNotificationMessage(attributes: EKAttributes, title: String, desc: String, textColor: UIColor, imageName: String? = nil) {
+        let title = EKProperty.LabelContent(text: title, style: .init(font: MainFont.medium.with(size: 16), color: textColor))
+        let description = EKProperty.LabelContent(text: desc, style: .init(font: MainFont.light.with(size: 14), color: textColor))
+        var image: EKProperty.ImageContent?
+        if let imageName = imageName {
+            image = .init(image: UIImage(named: imageName)!, size: CGSize(width: 35, height: 35))
+        }
+        
+        let simpleMessage = EKSimpleMessage(image: image, title: title, description: description)
+        let notificationMessage = EKNotificationMessage(simpleMessage: simpleMessage)
+        
+        let contentView = EKNotificationMessageView(with: notificationMessage)
+        SwiftEntryKit.display(entry: contentView, using: attributes)
     }
     
     private func requestPermission() {
@@ -115,6 +137,19 @@ class EventSearchViewController: UIViewController {
             searchResultsView.isScrolling = false
         }
     }
+    
+    private func setUpErrorPopupAttributes()
+    {
+        attributes = .topFloat
+        attributes.hapticFeedbackType = .success
+        attributes.entryBackground = .gradient(gradient: .init(colors: [.amber, .pinky], startPoint: .zero, endPoint: CGPoint(x: 1, y: 1)))
+        attributes.popBehavior = .animated(animation: .init(translate: .init(duration: 0.3), scale: .init(from: 1, to: 0.7, duration: 0.7)))
+        attributes.shadow = .active(with: .init(color: .black, opacity: 0.5, radius: 10))
+        attributes.statusBar = .dark
+        attributes.scroll = .enabled(swipeable: true, pullbackAnimation: .easeOut)
+        attributes.positionConstraints.maxSize = .init(width: .constant(value: UIScreen.main.bounds.size.width), height: .intrinsic)
+    }
+    
     // viewDidLayoutSubviews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -222,6 +257,16 @@ extension EventSearchViewController: SearchbarDelegate {
                     }
                 }
                 DispatchQueue.main.async {
+                    
+                    if error != nil {
+                        //Show error pop up message here
+                        let title = "No Results Found"
+                        let desc = "Enter your email and be notified of future updates"
+                        let image = "ic_locate"
+                        self.showNotificationMessage(attributes: self.attributes, title: title, desc: desc, textColor: .white, imageName: image)
+                        
+                    }
+
                     self.searchResultsView.update(newPlacemarks: placemarks, error: error)
                     completion?(placemarks, error)
                 }
