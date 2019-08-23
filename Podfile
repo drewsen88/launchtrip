@@ -14,7 +14,9 @@ target 'Launchtrip' do
   pod 'Presentation'
   pod 'Hue'
   pod 'EasyTransitions'
-
+  pod 'Presentr'
+  pod 'Alamofire'
+  
   target 'LaunchtripTests' do
     inherit! :search_paths
     # Pods for testing

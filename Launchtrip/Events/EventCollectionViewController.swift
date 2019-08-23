@@ -14,13 +14,14 @@ struct AppStoreAnimatorInfo {
     var index: IndexPath
 }
 
-class TodayCollectionViewController: UICollectionViewController {
+class EventCollectionViewController: UICollectionViewController {
 
     private var modalTransitionDelegate = ModalTransitionDelegate()
     private var animatorInfo: AppStoreAnimatorInfo?
+    private var eventsList = [Int]()
 
     // MARK: - Init
-    init() {
+    public init() {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 335, height: 412)
         layout.minimumLineSpacing = 30
@@ -28,17 +29,28 @@ class TodayCollectionViewController: UICollectionViewController {
         layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
         layout.scrollDirection = .vertical
         super.init(collectionViewLayout: layout)
+        eventsList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
     }
 
     required init?(coder aDecoder: NSCoder) {
         //fatalError("init(coder:) has not been implemented")
-        super.init(coder: aDecoder)
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = CGSize(width: 335, height: 412)
+        layout.minimumLineSpacing = 30
+        layout.minimumInteritemSpacing = 20
+        layout.sectionInset = UIEdgeInsets(top: 20, left: 20, bottom: 20, right: 20)
+        layout.scrollDirection = .vertical
+        eventsList = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+
+        super.init(collectionViewLayout: layout)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView?.backgroundColor = UIColor.white
-        collectionView?.register(TodayCollectionViewCell.self)
+        collectionView?.register(EventCollectionViewCell.self)
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.tintColor = .black
     }
@@ -82,14 +94,16 @@ class TodayCollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell: TodayCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        let cell: EventCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
+        cell.cardView.titleLabel.text = String(eventsList[indexPath.item])
+        print(cell.cardView.titleLabel.text ?? "")
         return cell
     }
     
     // MARK: - UICollectionViewDelegate
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        let detailViewController = AppDetailViewController()
+        let detailViewController = EventDetailViewController()
         
         guard let cell = collectionView.cellForItem(at: indexPath) else {
             present(detailViewController, animated: true, completion: nil)

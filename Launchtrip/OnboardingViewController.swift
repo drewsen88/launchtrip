@@ -363,7 +363,7 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
             print("Start trip button tapped for real")
             appDelegate.setupLocationManager()
 
-            if let viewController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "EventSearch") as? EventSearchViewController {
+            if let viewController = UIStoryboard.Main.instantiateViewController(withIdentifier: "EventSearch") as? EventSearchViewController {
                 if let navigator = navigationController {
                     navigator.pushViewController(viewController, animated: true)
                 }
@@ -458,18 +458,6 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
     }
     
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        guard let identString = segue.identifier, let identifier = SegueIdentifier(rawValue: identString) else {
-//            super.prepare(for: segue, sender: sender)
-//            return
-//        }
-//        switch identifier {
-//        case .showDetail:
-//            //Show view controller here
-//        }
-//    }
-
-
     
 }
 

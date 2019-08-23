@@ -12,6 +12,10 @@ protocol ReusableView: class {
     static var defaultReuseIdentifier: String { get }
 }
 
+protocol SortViewControllerDelegate: class {
+    func sortBy(option: SortBy)
+}
+
 extension ReusableView where Self: UIView {
     static var defaultReuseIdentifier: String {
         return NSStringFromClass(self)

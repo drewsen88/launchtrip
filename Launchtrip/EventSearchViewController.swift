@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import SwiftEntryKit
+import Alamofire
 
 class EventSearchViewController: UIViewController {
     
@@ -211,6 +212,8 @@ extension EventSearchViewController: SearchbarDelegate {
         guard let keyword = isTextInputValid(textField) else { return }
         searchResultsView.state = .loading
         searchLocations(keyword)
+        //TODO: Add event api request here
+        searchEvents(keyword)
     }
     
     private func isTextInputValid(_ textField: UITextField) -> String? {
@@ -273,6 +276,34 @@ extension EventSearchViewController: SearchbarDelegate {
             }
         }
     }
+    
+    private func searchEvents (_ keyword: String, completion: (([CLPlacemark], Error?) -> Void)? = nil)
+    {
+        
+        let parameters: Parameters = [
+            "name": keyword,
+            "sort": "starts",
+            "order": "ASC"
+        ]
+
+
+        Alamofire.request("https://events-api.previewlaunchtrip.com/events", parameters: parameters).responseJSON { response in
+            print("Request: \(String(describing: response.request))")   // original url request
+            print("Response: \(String(describing: response.response))") // http url response
+            print("Result: \(response.result)")                         // response serialization result
+            
+            if let json = response.result.value {
+                print("JSON: \(json)") // serialized json response
+            }
+            
+            if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                print("Data: \(utf8Text)") // original server data as UTF8 string
+            }
+        }
+
+    }
+    
+    
 }
 // MARK: - MKMapViewDelegate
 extension EventSearchViewController: MKMapViewDelegate {
@@ -297,9 +328,12 @@ extension EventSearchViewController: MKMapViewDelegate {
         if placemarkSelected {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { [weak self] in
-                let eventCollectionViewController = EventCollectionViewController()
-                if let navigator = self?.navigationController {
-                    navigator.pushViewController(eventCollectionViewController, animated: true)
+                
+                if let eventCollectionViewController = UIStoryboard.Main.instantiateViewController(withIdentifier: "EventCollection") as? EventCollectionViewController {
+                    if let navigator = self?.navigationController {
+                        navigator.pushViewController(eventCollectionViewController, animated: true)
+                }
+                
                 }
 
             })

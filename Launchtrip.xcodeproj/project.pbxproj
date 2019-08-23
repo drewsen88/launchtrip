@@ -15,6 +15,8 @@
 		5040ACDF22C3E977000F73E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5040ACDD22C3E977000F73E4 /* LaunchScreen.storyboard */; };
 		5040ACEA22C3E977000F73E4 /* LaunchtripTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040ACE922C3E977000F73E4 /* LaunchtripTests.swift */; };
 		5040ACF522C3E977000F73E4 /* LaunchtripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040ACF422C3E977000F73E4 /* LaunchtripUITests.swift */; };
+		50755A7B230B5BA900DEC380 /* SortBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50755A7A230B5BA900DEC380 /* SortBy.swift */; };
+		50755A7D230B5C8100DEC380 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50755A7C230B5C8100DEC380 /* SortViewController.swift */; };
 		508E369622EFF3010007922D /* JoTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E369522EFF3010007922D /* JoTagView.swift */; };
 		508F305522F10038008EDD1C /* UserDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 508F305322F10038008EDD1C /* UserDataModel.xcdatamodeld */; };
 		508F305722F10264008EDD1C /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508F305622F10264008EDD1C /* DataController.swift */; };
@@ -95,6 +97,8 @@
 		5040ACF022C3E977000F73E4 /* LaunchtripUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LaunchtripUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5040ACF422C3E977000F73E4 /* LaunchtripUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchtripUITests.swift; sourceTree = "<group>"; };
 		5040ACF622C3E977000F73E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50755A7A230B5BA900DEC380 /* SortBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortBy.swift; sourceTree = "<group>"; };
+		50755A7C230B5C8100DEC380 /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
 		508E369522EFF3010007922D /* JoTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoTagView.swift; sourceTree = "<group>"; };
 		508F305422F10038008EDD1C /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
 		508F305622F10264008EDD1C /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -219,7 +223,7 @@
 				50AA045D230A931900922486 /* RoundCornersButton.swift */,
 				50AA045A230A8C1000922486 /* Cells */,
 				50AA0455230A8BBD00922486 /* Shadow */,
-				50AA0450230A8B6400922486 /* Today - Events */,
+				50AA0450230A8B6400922486 /* Events */,
 				50AA0449230A8A8B00922486 /* UIKit */,
 				50AA0442230A874200922486 /* Utilities */,
 				50AA043D230A86A000922486 /* CardView */,
@@ -231,9 +235,11 @@
 				5040ACD422C3E975000F73E4 /* AppDelegate.swift */,
 				50AEDE2722DCF86A00EFF185 /* OnboardingViewController.swift */,
 				50AA040923063FFE00922486 /* EventSearchViewController.swift */,
+				50755A7C230B5C8100DEC380 /* SortViewController.swift */,
 				508F305322F10038008EDD1C /* UserDataModel.xcdatamodeld */,
 				508F305622F10264008EDD1C /* DataController.swift */,
 				5040ACD822C3E975000F73E4 /* Main.storyboard */,
+				50755A7A230B5BA900DEC380 /* SortBy.swift */,
 				5040ACDB22C3E977000F73E4 /* Assets.xcassets */,
 				50AA0430230A310A00922486 /* ResManager.swift */,
 				5040ACDD22C3E977000F73E4 /* LaunchScreen.storyboard */,
@@ -314,14 +320,14 @@
 			path = UIKit;
 			sourceTree = "<group>";
 		};
-		50AA0450230A8B6400922486 /* Today - Events */ = {
+		50AA0450230A8B6400922486 /* Events */ = {
 			isa = PBXGroup;
 			children = (
 				50AA044C230A8B5E00922486 /* EventDetailViewController.xib */,
 				50AA044D230A8B5E00922486 /* EventCollectionViewController.swift */,
 				50AA044A230A8B5200922486 /* EventDetailViewController.swift */,
 			);
-			path = "Today - Events";
+			path = Events;
 			sourceTree = "<group>";
 		};
 		50AA0455230A8BBD00922486 /* Shadow */ = {
@@ -647,8 +653,10 @@
 				50AA045E230A931900922486 /* CircularImageView.swift in Sources */,
 				50AA0421230A2F3000922486 /* WidgetExtensions.swift in Sources */,
 				50101DC022CF8D5600661531 /* Images.swift in Sources */,
+				50755A7D230B5C8100DEC380 /* SortViewController.swift in Sources */,
 				508F305722F10264008EDD1C /* DataController.swift in Sources */,
 				50AA0413230A2ED600922486 /* Extensions.swift in Sources */,
+				50755A7B230B5BA900DEC380 /* SortBy.swift in Sources */,
 				50AA0414230A2ED600922486 /* AnimHelper.swift in Sources */,
 				50AA0454230A8BB900922486 /* UIView + ShadowStyle.swift in Sources */,
 				50AA042C230A2FAA00922486 /* MaterialTextField.swift in Sources */,
@@ -845,13 +853,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2S78247GL5;
+				DEVELOPMENT_TEAM = 3W23KQK89K;
 				INFOPLIST_FILE = Launchtrip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Launchtrip.alpha;
+				PRODUCT_BUNDLE_IDENTIFIER = com.launchtrip.launchtrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -864,13 +872,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2S78247GL5;
+				DEVELOPMENT_TEAM = 3W23KQK89K;
 				INFOPLIST_FILE = Launchtrip/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.Launchtrip.alpha;
+				PRODUCT_BUNDLE_IDENTIFIER = com.launchtrip.launchtrip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

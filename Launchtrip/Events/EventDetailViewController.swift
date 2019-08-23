@@ -9,7 +9,7 @@
 import UIKit
 import EasyTransitions
 
-class AppDetailViewController: UIViewController {
+class EventDetailViewController: UIViewController {
     
     @IBOutlet weak var cardView: CardView!
     @IBOutlet weak var contentView: UIView!
@@ -17,8 +17,8 @@ class AppDetailViewController: UIViewController {
     
     // TODO: - Inject card detail.
     init() {
-        super.init(nibName: String(describing: AppDetailViewController.self),
-                   bundle: Bundle(for: AppDetailViewController.self))
+        super.init(nibName: String(describing: EventDetailViewController.self),
+                   bundle: Bundle(for: EventDetailViewController.self))
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -43,7 +43,7 @@ class AppDetailViewController: UIViewController {
     }
 }
 
-extension AppDetailViewController: CardViewDelegate {
+extension EventDetailViewController: CardViewDelegate {
     func closeCardView() {
         dismiss(animated: true, completion: nil)
     }

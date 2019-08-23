@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AppDetailViewController" customModule="EasyTransitions_Example" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="EventDetailViewController" customModule="Launchtrip" customModuleProvider="target">
             <connections>
                 <outlet property="backView" destination="qF7-Wc-aWD" id="1kY-Yw-01b"/>
                 <outlet property="cardView" destination="aGR-bD-2Rb" id="prE-YU-6Hu"/>
@@ -38,13 +38,13 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launchtrip Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfe-Sa-fKE">
-                            <rect key="frame" x="77.000000000000014" y="137.00000000000006" width="221.33333333333337" height="33.666666666666657"/>
+                            <rect key="frame" x="77" y="137.00000000000006" width="221" height="34"/>
                             <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3m7-AX-KWK">
-                            <rect key="frame" x="47.666666666666657" y="190.66666666666669" width="280" height="122"/>
+                            <rect key="frame" x="47.666666666666657" y="191.00000000000006" width="280" height="122"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="280" id="Lgl-vK-qSR"/>
                             </constraints>
@@ -64,7 +64,7 @@
                         <constraint firstItem="Bfe-Sa-fKE" firstAttribute="top" secondItem="LkP-wJ-aMv" secondAttribute="bottom" constant="20" id="uqW-LW-kkO"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="aGR-bD-2Rb" customClass="CardView" customModule="EasyTransitions_Example" customModuleProvider="target">
+                <view contentMode="scaleToFill" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="aGR-bD-2Rb" customClass="CardView" customModule="Launchtrip" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="461.33333333333331"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="aGR-bD-2Rb" secondAttribute="height" multiplier="335:412" placeholder="YES" id="50c-OP-sCK"/>

@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (4.8.2)
   - EasyTransitions (0.5.5)
   - Firebase/Analytics (6.4.0):
     - Firebase/Core
@@ -56,21 +57,25 @@ PODS:
   - Pages (2.0.2)
   - Presentation (4.1.2):
     - Pages (~> 2.0)
+  - Presentr (1.9)
   - QuickLayout (3.0.0)
   - SPStorkController (1.7.5)
   - SwiftEntryKit (1.0.2):
     - QuickLayout (= 3.0.0)
 
 DEPENDENCIES:
+  - Alamofire
   - EasyTransitions
   - Firebase/Analytics
   - Hue
   - Presentation
+  - Presentr
   - SPStorkController
   - SwiftEntryKit
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Alamofire
     - EasyTransitions
     - Firebase
     - FirebaseAnalytics
@@ -82,11 +87,13 @@ SPEC REPOS:
     - nanopb
     - Pages
     - Presentation
+    - Presentr
     - QuickLayout
     - SPStorkController
     - SwiftEntryKit
 
 SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
   EasyTransitions: b76b538f1f3a43721add405a7edc7e5d4e153752
   Firebase: 9445469655a98e9010737f4bc4720e5bda465873
   FirebaseAnalytics: 69fe25866d2ec87c6f02d72c3c9a82bce9c065a0
@@ -98,10 +105,11 @@ SPEC CHECKSUMS:
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Pages: 5564ac6035c48fef7a837049314f57507d263b11
   Presentation: 84974970fa451c89147d2bed4d5d50f857e71761
+  Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
   QuickLayout: 07b45a72b10083fee3f095990cfed1c1e7b27f0a
   SPStorkController: be4ae2a5ee052ad78782f6144ffe7e951300ea67
   SwiftEntryKit: 7bcd42b3dbff59c431d60d6513129fd3679e4aaf
 
-PODFILE CHECKSUM: 1ab123f9cc533417e413966aed111b7a4d7c6a72
+PODFILE CHECKSUM: 9c51cb0430a04f0260aafbcef73c8d9f45f0c7d7
 
 COCOAPODS: 1.7.4

@@ -24,6 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         rootViewController: self.presentationController
     )
     private lazy var presentationController: OnboardingViewController = .init(pages: [])
+    
 
 //    private lazy var navigationController: UINavigationController = .init(
 //        rootViewController: self.presentationController
