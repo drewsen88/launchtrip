@@ -363,9 +363,10 @@ class OnboardingViewController: PresentationController, UITextFieldDelegate {
             print("Start trip button tapped for real")
             appDelegate.setupLocationManager()
 
-            if let viewController = UIStoryboard.Main.instantiateViewController(withIdentifier: "EventSearch") as? EventSearchViewController {
+            if let eventSearchviewController = UIStoryboard.Main.instantiateViewController(withIdentifier: "EventSearch") as? EventSearchViewController {
                 if let navigator = navigationController {
-                    navigator.pushViewController(viewController, animated: true)
+                    eventSearchviewController.firstName = firstName
+                    navigator.pushViewController(eventSearchviewController, animated: true)
                 }
             }
 

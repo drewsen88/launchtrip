@@ -16,6 +16,8 @@ class EventSearchViewController: UIViewController {
     private var placemarkSelected: Bool = false
     var attributes: EKAttributes! = nil
     
+    public lazy var firstName: String = ""
+    
     // MARK: - UI widgets
     private var greeting: UITextView!
     private var searchbar: Searchbar!
@@ -48,8 +50,9 @@ class EventSearchViewController: UIViewController {
         maskView.backgroundColor = .white
         
         greeting = UITextView()
-        greeting.text = "What event are you attending?"
-        greeting.font = UIFont.boldSystemFont(ofSize: 25)
+        greeting.text = "Hi \(firstName),\nWhat event are you attending?"
+        greeting.isEditable = false
+        greeting.font = UIFont.boldSystemFont(ofSize: 26)
         greeting.backgroundColor = .clear
         // Configure searchbar
         searchbar = Searchbar(
@@ -79,7 +82,7 @@ class EventSearchViewController: UIViewController {
             cornerRadius: 0.15*dim.width/2,
             withShadow: true
         )
-        self.view.addSubViews([mapView, btnLocate, maskView, searchResultsView, searchbar, greeting])
+        self.view.addSubViews([mapView, btnLocate, maskView, searchResultsView, greeting, searchbar])
         self.navigationItem.setHidesBackButton(true, animated:true)
     }
     
@@ -163,7 +166,7 @@ class EventSearchViewController: UIViewController {
             NSLayoutConstraint(item: greeting as Any, attribute: .top,
                                relatedBy: .equal,
                                toItem: self.view, attribute: .top,
-                               multiplier: 1.0, constant: 0.25*self.dim.height),
+                               multiplier: 1.0, constant: 0.32*self.dim.height),
             NSLayoutConstraint(item: greeting as Any, attribute: .centerX,
                                relatedBy: .equal,
                                toItem: self.view, attribute: .centerX,
@@ -171,7 +174,7 @@ class EventSearchViewController: UIViewController {
             NSLayoutConstraint(item: searchbar as Any, attribute: .top,
                                relatedBy: .equal,
                                toItem: self.view, attribute: .top,
-                               multiplier: 1.0, constant: 0.33*self.dim.height),
+                               multiplier: 1.0, constant: 0.43*self.dim.height),
             NSLayoutConstraint(item: searchbar as Any, attribute: .centerX,
                                relatedBy: .equal,
                                toItem: self.view, attribute: .centerX,
@@ -189,7 +192,7 @@ class EventSearchViewController: UIViewController {
         searchbar.setHeightConstraint(0.07*dim.height)
         searchbar.setWidthConstraint(0.9*dim.width)
         
-        greeting.setHeightConstraint(0.07*dim.height)
+        greeting.setHeightConstraint(0.15*dim.height)
         greeting.setWidthConstraint(0.9*dim.width)
         
         // Set the corner radius to be half of the button height to make it circular.
