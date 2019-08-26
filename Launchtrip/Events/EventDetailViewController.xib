@@ -15,6 +15,7 @@
                 <outlet property="backView" destination="qF7-Wc-aWD" id="1kY-Yw-01b"/>
                 <outlet property="cardView" destination="aGR-bD-2Rb" id="prE-YU-6Hu"/>
                 <outlet property="contentView" destination="1cQ-uG-LZt" id="1xF-Gr-z25"/>
+                <outlet property="eventNameLabel" destination="Bfe-Sa-fKE" id="zXS-0n-H0I"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -37,20 +38,23 @@
                                 <constraint firstAttribute="width" constant="87" id="tGD-W9-fOb"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launchtrip Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfe-Sa-fKE">
-                            <rect key="frame" x="77" y="137.00000000000006" width="221" height="34"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3m7-AX-KWK">
-                            <rect key="frame" x="47.666666666666657" y="191.00000000000006" width="280" height="122"/>
+                            <rect key="frame" x="47.666666666666657" y="183.33333333333331" width="280" height="122"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="280" id="Lgl-vK-qSR"/>
                             </constraints>
                             <string key="text">"Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took  make a type book"</string>
                             <fontDescription key="fontDescription" type="italicSystem" pointSize="17"/>
                             <color key="textColor" white="0.5" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Launchtrip Event" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bfe-Sa-fKE">
+                            <rect key="frame" x="62.666666666666657" y="137.00000000000006" width="249.99999999999997" height="26.333333333333343"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="250" id="jVf-do-qHl"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -87,7 +91,7 @@
                 <constraint firstItem="1cQ-uG-LZt" firstAttribute="top" secondItem="aGR-bD-2Rb" secondAttribute="bottom" id="nFl-hU-nb9"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="R4q-ej-AuJ"/>
-            <point key="canvasLocation" x="33.5" y="54"/>
+            <point key="canvasLocation" x="32.799999999999997" y="53.940886699507388"/>
         </view>
     </objects>
     <resources>

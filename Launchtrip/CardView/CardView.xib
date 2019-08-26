@@ -9,9 +9,11 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="EasyTransitions_Example" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CardView" customModule="Launchtrip" customModuleProvider="target">
             <connections>
                 <outlet property="closeButton" destination="uZt-Kn-9ZP" id="69b-Fs-A4i"/>
+                <outlet property="dateLabel" destination="0hX-hn-NM3" id="ObO-FY-E5t"/>
+                <outlet property="eventCenterLabel" destination="lH3-By-JeI" id="3qH-Kr-GOe"/>
                 <outlet property="iconTopLayoutConstraint" destination="G9D-dy-J8n" id="FjZ-ug-0zp"/>
                 <outlet property="imageView" destination="xvq-cs-anC" id="9Fh-G9-xh9"/>
                 <outlet property="titleLabel" destination="qVo-t7-kmS" id="nV2-T6-DJF"/>
@@ -26,7 +28,7 @@
                     <rect key="frame" x="-111.5" y="0.0" width="625" height="427"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nd4-Mq-DEh" customClass="iOSIconImageView" customModule="EasyTransitions_Example" customModuleProvider="target">
+                <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nd4-Mq-DEh" customClass="iOSIconImageView" customModule="Launchtrip" customModuleProvider="target">
                     <rect key="frame" x="20" y="20" width="87" height="87"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="87" id="Fqk-zw-PMQ"/>
@@ -34,23 +36,23 @@
                     </constraints>
                 </imageView>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="Jxm-eh-x2d">
-                    <rect key="frame" x="20" y="338" width="216" height="78"/>
+                    <rect key="frame" x="20" y="351" width="216" height="65"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Venue name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lH3-By-JeI">
-                            <rect key="frame" x="0.0" y="0.0" width="195" height="42"/>
-                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="35"/>
+                            <rect key="frame" x="0.0" y="0.0" width="135" height="29"/>
+                            <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="24"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sept. 5 - 9, 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0hX-hn-NM3">
-                            <rect key="frame" x="0.0" y="42" width="216" height="36"/>
+                            <rect key="frame" x="0.0" y="29" width="216" height="36"/>
                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
                 </stackView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7mB-e3-KMG" customClass="RoundCornersButton" customModule="EasyTransitions_Example" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7mB-e3-KMG" customClass="RoundCornersButton" customModule="Launchtrip" customModuleProvider="target">
                     <rect key="frame" x="308" y="388" width="74" height="28"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -61,11 +63,11 @@
                     <state key="normal" title="GO"/>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LAUNCHTRIP EVENT" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVo-t7-kmS">
-                    <rect key="frame" x="20" y="127" width="362" height="129"/>
+                    <rect key="frame" x="20" y="127" width="362" height="30"/>
                     <constraints>
                         <constraint firstAttribute="width" priority="750" constant="362" id="Ga8-jt-hA3"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="54"/>
+                    <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="25"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" alpha="0.0" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uZt-Kn-9ZP">

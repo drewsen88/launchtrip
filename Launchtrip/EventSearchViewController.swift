@@ -10,6 +10,40 @@ import UIKit
 import MapKit
 import SwiftEntryKit
 import Alamofire
+import Intents
+import Contacts
+
+
+public struct EventCenter: Codable {
+    
+    var city: String
+    var country: String
+    var id: String
+    
+    var lat: String
+    var lon: String
+
+    var name: String
+    var state: String
+    var streetAddress: String
+
+}
+
+
+public struct EventLandmark: Codable {
+    // Double, String, and Int all conform to Codable.
+    var ends: String
+    
+    // Adding a property of a custom Codable type maintains overall Codable conformance.
+    var eventCenter: EventCenter
+
+    var id: String
+    var instanceName: String
+    var name: String
+    var starts: String
+    var timezone: String
+    
+}
 
 class EventSearchViewController: UIViewController {
     
@@ -28,6 +62,9 @@ class EventSearchViewController: UIViewController {
     // MARK: - Private properties
     private var dim: CGSize = .zero
     private let animHplr = AnimHelper.shared
+    
+    private var foundPlacemarks = [CLPlacemark]()
+    private var eventLandmarks = [EventLandmark]()
     // viewDidLoad
     override func viewDidLoad() {
         
@@ -50,7 +87,11 @@ class EventSearchViewController: UIViewController {
         maskView.backgroundColor = .white
         
         greeting = UITextView()
-        greeting.text = "Hi \(firstName),\nWhat event are you attending?"
+        if firstName != ""
+        {
+            greeting.text = "Hi \(firstName),"
+        }
+        greeting.text.append("\nWhat event are you attending?") 
         greeting.isEditable = false
         greeting.font = UIFont.boldSystemFont(ofSize: 26)
         greeting.backgroundColor = .clear
@@ -117,6 +158,8 @@ class EventSearchViewController: UIViewController {
         //Dispatch async transition to events view controller
         // show events view controller
         placemarkSelected = true
+        let placemarkIndex = foundPlacemarks.firstIndex(of: placemark)!
+        eventLandmarks.swapAt(placemarkIndex, 0)
 
         // Set search bar
         self.searchbar.textInput.text = placemark.name
@@ -128,7 +171,6 @@ class EventSearchViewController: UIViewController {
         annotation.title = placemark.name
         annotation.coordinate = loc.coordinate
         self.mapView.showAnnotations([annotation], animated: true)
-        
         
     }
     
@@ -166,7 +208,7 @@ class EventSearchViewController: UIViewController {
             NSLayoutConstraint(item: greeting as Any, attribute: .top,
                                relatedBy: .equal,
                                toItem: self.view, attribute: .top,
-                               multiplier: 1.0, constant: 0.32*self.dim.height),
+                               multiplier: 1.0, constant: 0.24*self.dim.height),
             NSLayoutConstraint(item: greeting as Any, attribute: .centerX,
                                relatedBy: .equal,
                                toItem: self.view, attribute: .centerX,
@@ -174,7 +216,7 @@ class EventSearchViewController: UIViewController {
             NSLayoutConstraint(item: searchbar as Any, attribute: .top,
                                relatedBy: .equal,
                                toItem: self.view, attribute: .top,
-                               multiplier: 1.0, constant: 0.43*self.dim.height),
+                               multiplier: 1.0, constant: 0.35*self.dim.height),
             NSLayoutConstraint(item: searchbar as Any, attribute: .centerX,
                                relatedBy: .equal,
                                toItem: self.view, attribute: .centerX,
@@ -214,7 +256,7 @@ extension EventSearchViewController: SearchbarDelegate {
     func searchbarTextDidChange(_ textField: UITextField) {
         guard let keyword = isTextInputValid(textField) else { return }
         searchResultsView.state = .loading
-        searchLocations(keyword)
+//        searchLocations(keyword)
         //TODO: Add event api request here
         searchEvents(keyword)
     }
@@ -236,10 +278,15 @@ extension EventSearchViewController: SearchbarDelegate {
     
     func searchbarTextShouldReturn(_ textField: UITextField) -> Bool {
         guard let keyword = isTextInputValid(textField) else { return false }
-        searchLocations(keyword, completion: { [weak self] (placemarks, error) in
-            guard let self = self, let first = placemarks.first else { return }
-            self.didSelectPlacemark(first)
-        })
+//        searchLocations(keyword, completion: { [weak self] (placemarks, error) in
+//            guard let self = self, let first = placemarks.first else { return }
+//            self.didSelectPlacemark(first)
+//        })
+        searchEvents(keyword)
+        if foundPlacemarks.count > 0
+        {
+            self.didSelectPlacemark(foundPlacemarks.first!)
+        }
         return true
     }
     /**
@@ -266,10 +313,7 @@ extension EventSearchViewController: SearchbarDelegate {
                     
                     if error != nil {
                         //Show error pop up message here
-                        let title = "No Results Found"
-                        let desc = "Enter your email and be notified of future updates"
-                        let image = "ic_locate"
-                        self.showNotificationMessage(attributes: self.attributes, title: title, desc: desc, textColor: .white, imageName: image)
+                        self.showErrorPopupMessage()
                         
                     }
 
@@ -290,7 +334,7 @@ extension EventSearchViewController: SearchbarDelegate {
         ]
 
 
-        Alamofire.request("https://events-api.previewlaunchtrip.com/events", parameters: parameters).responseJSON { response in
+        Alamofire.request(APPURL.EventEndpoint, parameters: parameters).responseJSON { response in
             print("Request: \(String(describing: response.request))")   // original url request
             print("Response: \(String(describing: response.response))") // http url response
             print("Result: \(response.result)")                         // response serialization result
@@ -300,9 +344,67 @@ extension EventSearchViewController: SearchbarDelegate {
             }
             
             if let data = response.data, let utf8Text = String(data: data, encoding: .utf8) {
+                
+                var landMarks: [EventLandmark]
+                var newPlacemarks = [CLPlacemark]()
+                
+                do{
+                    //created the json decoder
+                    let decoder = JSONDecoder()
+
+                    //using the array to put values
+                    landMarks = try decoder.decode([EventLandmark].self, from: data)
+                    self.eventLandmarks = landMarks
+                    
+                    //printing all the hero names
+                    for landMark in landMarks{
+                        let eventLocation = CLLocation(latitude: (landMark.eventCenter.lat as NSString).doubleValue, longitude: (landMark.eventCenter.lon as NSString).doubleValue)
+                        let eventName = landMark.name
+                        
+                        let postalAddr = CNMutablePostalAddress()
+                        postalAddr.street = String(format: "%@", landMark.eventCenter.streetAddress)
+
+                        let event = CLPlacemark.init(location: eventLocation,
+                                                  name: eventName,
+                                                  postalAddress: nil)
+                        newPlacemarks.append(event)
+                        print(landMark.name)
+                    }
+                    
+                }catch let err{
+                    print(err)
+                }
+                
+                
+                if newPlacemarks.count > 0
+                {
+                    self.foundPlacemarks = newPlacemarks
+                    self.searchResultsView.update(newPlacemarks: newPlacemarks, error: nil)
+
+                }
+                else{
+                    //Show error pop up message here
+                    let title = "No Results Found"
+                    let desc = "Enter your email and be notified of future updates"
+                    let image = "ic_locate"
+                    self.showNotificationMessage(attributes: self.attributes, title: title, desc: desc, textColor: .white, imageName: image)
+                    
+
+                }
+
                 print("Data: \(utf8Text)") // original server data as UTF8 string
             }
         }
+
+    }
+    
+    private func showErrorPopupMessage()
+    {
+        //Show error pop up message here
+        let title = "No Results Found"
+        let desc = "Enter your email and be notified of future updates"
+        let image = "ic_locate"
+        self.showNotificationMessage(attributes: self.attributes, title: title, desc: desc, textColor: .white, imageName: image)
 
     }
     
@@ -322,6 +424,7 @@ extension EventSearchViewController: MKMapViewDelegate {
         } else {
             annotationView!.annotation = annotation
         }
+        
         return annotationView
     }
     
@@ -333,6 +436,7 @@ extension EventSearchViewController: MKMapViewDelegate {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { [weak self] in
                 
                 if let eventCollectionViewController = UIStoryboard.Main.instantiateViewController(withIdentifier: "EventCollection") as? EventCollectionViewController {
+                    eventCollectionViewController.eventLandmarks = self?.eventLandmarks ?? [EventLandmark]()
                     if let navigator = self?.navigationController {
                         navigator.pushViewController(eventCollectionViewController, animated: true)
                 }

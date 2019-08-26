@@ -16,6 +16,8 @@ target 'Launchtrip' do
   pod 'EasyTransitions'
   pod 'Presentr'
   pod 'Alamofire'
+  pod 'AMScrollingNavbar'
+  pod 'RFISO8601DateTime'
   
   target 'LaunchtripTests' do
     inherit! :search_paths

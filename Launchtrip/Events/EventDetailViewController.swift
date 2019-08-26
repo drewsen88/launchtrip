@@ -14,9 +14,17 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var cardView: CardView!
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var eventNameLabel: UILabel!
+    
+    public var eventName: String
+    public var eventCenterName: String
+    public var startDate: String
     
     // TODO: - Inject card detail.
     init() {
+        eventName = ""
+        eventCenterName = ""
+        startDate = ""
         super.init(nibName: String(describing: EventDetailViewController.self),
                    bundle: Bundle(for: EventDetailViewController.self))
     }
@@ -27,7 +35,11 @@ class EventDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        cardView.titleLabel.text = eventName
+        cardView.eventCenterLabel.text = eventCenterName
+        cardView.dateLabel.text = startDate
         cardView.delegate = self
+        eventNameLabel.text = eventName
         backView.set(shadowStyle: .todayCard)
         layout(presenting: false)
         if #available(iOS 11, *) {

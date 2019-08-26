@@ -73,6 +73,7 @@
         <!--Event Collection View Controller-->
         <scene sceneID="iid-Zn-3fR">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i1M-8W-sku" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <collectionViewController storyboardIdentifier="EventCollection" id="JUC-Qf-vro" customClass="EventCollectionViewController" customModule="Launchtrip" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="3rF-8D-ZG9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -109,9 +110,37 @@
                     </toolbarItems>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </collectionViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="i1M-8W-sku" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2156.521739130435" y="121.875"/>
+            <point key="canvasLocation" x="733" y="873"/>
+        </scene>
+        <!--Root View Controller-->
+        <scene sceneID="vtT-5W-m6c">
+            <objects>
+                <tableViewController id="OpE-WB-OsU" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Kf-Ga-Mww">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="JZ6-PC-BOm">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JZ6-PC-BOm" id="7ar-6Y-GJg">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="OpE-WB-OsU" id="ij7-5b-zR0"/>
+                            <outlet property="delegate" destination="OpE-WB-OsU" id="N76-sy-0x1"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="Cuc-iq-f6E"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GgY-ZH-Lsn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2606" y="267"/>
         </scene>
         <!--Sort View Controller-->
         <scene sceneID="c5I-MO-U8R">
@@ -160,16 +189,17 @@
             </objects>
             <point key="canvasLocation" x="3161" y="122"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Scrolling Navigation Controller-->
         <scene sceneID="OEq-5z-Zfn">
             <objects>
-                <navigationController id="R5F-dD-lsY" sceneMemberID="viewController">
+                <navigationController id="R5F-dD-lsY" customClass="ScrollingNavigationController" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="hfq-gD-txE">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="rkn-bS-ybj"/>
+                        <segue destination="JUC-Qf-vro" kind="presentation" id="5et-Sx-Sca"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TI7-8L-8tN" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,4 +207,7 @@
             <point key="canvasLocation" x="-845" y="131"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="5et-Sx-Sca"/>
+    </inferredMetricsTieBreakers>
 </document>

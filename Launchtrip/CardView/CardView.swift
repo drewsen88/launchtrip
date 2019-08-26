@@ -15,7 +15,9 @@ public final class CardView: UIView, NibOwnerLoadable {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var iconTopLayoutConstraint: NSLayoutConstraint!
-
+    @IBOutlet weak var eventCenterLabel: UILabel!
+    
+    @IBOutlet weak var dateLabel: UILabel!
     // Delegate
     weak var delegate: CardViewDelegate?
     

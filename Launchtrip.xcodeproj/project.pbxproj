@@ -17,6 +17,9 @@
 		5040ACF522C3E977000F73E4 /* LaunchtripUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5040ACF422C3E977000F73E4 /* LaunchtripUITests.swift */; };
 		50755A7B230B5BA900DEC380 /* SortBy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50755A7A230B5BA900DEC380 /* SortBy.swift */; };
 		50755A7D230B5C8100DEC380 /* SortViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50755A7C230B5C8100DEC380 /* SortViewController.swift */; };
+		50755A7F2310794800DEC380 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50755A7E2310794800DEC380 /* CollectionViewController.swift */; };
+		50755A8123139EF000DEC380 /* URLConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50755A8023139EF000DEC380 /* URLConstants.swift */; };
+		50755A842313A55500DEC380 /* String+SwiftyDates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50755A832313A55500DEC380 /* String+SwiftyDates.swift */; };
 		508E369622EFF3010007922D /* JoTagView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508E369522EFF3010007922D /* JoTagView.swift */; };
 		508F305522F10038008EDD1C /* UserDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 508F305322F10038008EDD1C /* UserDataModel.xcdatamodeld */; };
 		508F305722F10264008EDD1C /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508F305622F10264008EDD1C /* DataController.swift */; };
@@ -99,6 +102,9 @@
 		5040ACF622C3E977000F73E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50755A7A230B5BA900DEC380 /* SortBy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortBy.swift; sourceTree = "<group>"; };
 		50755A7C230B5C8100DEC380 /* SortViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortViewController.swift; sourceTree = "<group>"; };
+		50755A7E2310794800DEC380 /* CollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
+		50755A8023139EF000DEC380 /* URLConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = URLConstants.swift; path = Launchtrip/Utilities/URLConstants.swift; sourceTree = "<group>"; };
+		50755A832313A55500DEC380 /* String+SwiftyDates.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "String+SwiftyDates.swift"; path = "../../String+SwiftyDates.swift"; sourceTree = "<group>"; };
 		508E369522EFF3010007922D /* JoTagView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoTagView.swift; sourceTree = "<group>"; };
 		508F305422F10038008EDD1C /* User.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = User.xcdatamodel; sourceTree = "<group>"; };
 		508F305622F10264008EDD1C /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -187,6 +193,7 @@
 			isa = PBXGroup;
 			children = (
 				50101DBF22CF8D5600661531 /* Images.swift */,
+				50755A8023139EF000DEC380 /* URLConstants.swift */,
 			);
 			name = Constants;
 			sourceTree = "<group>";
@@ -218,6 +225,7 @@
 		5040ACD322C3E975000F73E4 /* Launchtrip */ = {
 			isa = PBXGroup;
 			children = (
+				50755A7E2310794800DEC380 /* CollectionViewController.swift */,
 				50AA045B230A931900922486 /* CircularImageView.swift */,
 				50AA045C230A931900922486 /* iOSIconImageView.swift */,
 				50AA045D230A931900922486 /* RoundCornersButton.swift */,
@@ -304,6 +312,7 @@
 		50AA0442230A874200922486 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				50755A832313A55500DEC380 /* String+SwiftyDates.swift */,
 				50AA043E230A873E00922486 /* NibLoadbleView.swift */,
 				50AA043F230A873F00922486 /* ReusableCells.swift */,
 			);
@@ -639,6 +648,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50755A7F2310794800DEC380 /* CollectionViewController.swift in Sources */,
 				50AA0441230A873F00922486 /* ReusableCells.swift in Sources */,
 				50F9A8C922E13A3300A9337E /* SPFakeBarNavigationStyle.swift in Sources */,
 				50AA043C230A85EE00922486 /* CardViewDelegate.swift in Sources */,
@@ -655,10 +665,12 @@
 				50101DC022CF8D5600661531 /* Images.swift in Sources */,
 				50755A7D230B5C8100DEC380 /* SortViewController.swift in Sources */,
 				508F305722F10264008EDD1C /* DataController.swift in Sources */,
+				50755A842313A55500DEC380 /* String+SwiftyDates.swift in Sources */,
 				50AA0413230A2ED600922486 /* Extensions.swift in Sources */,
 				50755A7B230B5BA900DEC380 /* SortBy.swift in Sources */,
 				50AA0414230A2ED600922486 /* AnimHelper.swift in Sources */,
 				50AA0454230A8BB900922486 /* UIView + ShadowStyle.swift in Sources */,
+				50755A8123139EF000DEC380 /* URLConstants.swift in Sources */,
 				50AA042C230A2FAA00922486 /* MaterialTextField.swift in Sources */,
 				50AA0458230A8C0A00922486 /* EventCollectionViewCell.swift in Sources */,
 				50AA045F230A931900922486 /* iOSIconImageView.swift in Sources */,

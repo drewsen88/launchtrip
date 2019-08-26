@@ -8,6 +8,8 @@
 
 import UIKit
 import EasyTransitions
+import AMScrollingNavbar
+import RFISO8601DateTime
 
 struct AppStoreAnimatorInfo {
     var animator: AppStoreAnimator
@@ -19,7 +21,8 @@ class EventCollectionViewController: UICollectionViewController {
     private var modalTransitionDelegate = ModalTransitionDelegate()
     private var animatorInfo: AppStoreAnimatorInfo?
     private var eventsList = [Int]()
-
+    public lazy var eventLandmarks = [EventLandmark]()
+    
     // MARK: - Init
     public init() {
         let layout = UICollectionViewFlowLayout()
@@ -49,6 +52,11 @@ class EventCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //title = "CollectionView"
+        //navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        //navigationController?.navigationBar.barTintColor = UIColor(red:0.91, green:0.3, blue:0.24, alpha:1)
+
         collectionView?.backgroundColor = UIColor.white
         collectionView?.register(EventCollectionViewCell.self)
         self.navigationController?.navigationBar.topItem?.title = ""
@@ -58,8 +66,21 @@ class EventCollectionViewController: UICollectionViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         recalculateItemSizes(givenWidth: self.view.frame.size.width)
-    }
+        
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.followScrollView(collectionView, delay: 50.0)
+        }
 
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if let navigationController = self.navigationController as? ScrollingNavigationController {
+            navigationController.stopFollowingScrollView()
+        }
+    }
+    
     func recalculateItemSizes(givenWidth width: CGFloat) {
         let vcWidth = width - 20//20 is left margin
         var width: CGFloat = 355 //335 is ideal size + 20 of right margin for each item
@@ -90,13 +111,23 @@ class EventCollectionViewController: UICollectionViewController {
 
     // MARK: - UICollectionViewDataSource
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 12
+        return self.eventLandmarks.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: EventCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
-        cell.cardView.titleLabel.text = String(eventsList[indexPath.item])
-        print(cell.cardView.titleLabel.text ?? "")
+//        cell.cardView.titleLabel.text = String(eventsList[indexPath.item])
+        cell.cardView.titleLabel.text = String(self.eventLandmarks[indexPath.item].name)
+        cell.cardView.eventCenterLabel.text = String(self.eventLandmarks[indexPath.item].eventCenter.name)
+        
+        let startString = self.eventLandmarks[indexPath.item].starts
+        
+        let parsedDateTime = Date.parseDateString(startString)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        let dateString = formatter.string(from: parsedDateTime!)
+        cell.cardView.dateLabel.text = dateString
         return cell
     }
     
@@ -104,6 +135,19 @@ class EventCollectionViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
         let detailViewController = EventDetailViewController()
+        
+        let eventName = self.eventLandmarks[indexPath.item].name
+        detailViewController.eventName = eventName
+        detailViewController.eventCenterName = String(self.eventLandmarks[indexPath.item].eventCenter.name)
+        
+        let startString = self.eventLandmarks[indexPath.item].starts
+        
+        let parsedDateTime = Date.parseDateString(startString)
+        
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        let dateString = formatter.string(from: parsedDateTime!)
+        detailViewController.startDate = dateString
         
         guard let cell = collectionView.cellForItem(at: indexPath) else {
             present(detailViewController, animated: true, completion: nil)
