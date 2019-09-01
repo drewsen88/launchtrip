@@ -32,7 +32,7 @@ public struct EventCenter: Codable {
 
 public struct EventLandmark: Codable {
     // Double, String, and Int all conform to Codable.
-    var ends: String
+    var ends: String?
     
     // Adding a property of a custom Codable type maintains overall Codable conformance.
     var eventCenter: EventCenter
@@ -40,7 +40,7 @@ public struct EventLandmark: Codable {
     var id: String
     var instanceName: String
     var name: String
-    var starts: String
+    var starts: String?
     var timezone: String
     
 }
@@ -158,8 +158,11 @@ class EventSearchViewController: UIViewController {
         //Dispatch async transition to events view controller
         // show events view controller
         placemarkSelected = true
-        let placemarkIndex = foundPlacemarks.firstIndex(of: placemark)!
-        eventLandmarks.swapAt(placemarkIndex, 0)
+        
+        if foundPlacemarks.count > 0 {
+            let placemarkIndex = foundPlacemarks.firstIndex(of: placemark)!
+            eventLandmarks.swapAt(placemarkIndex, 0)
+        }
 
         // Set search bar
         self.searchbar.textInput.text = placemark.name
@@ -256,9 +259,9 @@ extension EventSearchViewController: SearchbarDelegate {
     func searchbarTextDidChange(_ textField: UITextField) {
         guard let keyword = isTextInputValid(textField) else { return }
         searchResultsView.state = .loading
-//        searchLocations(keyword)
+        searchLocations(keyword)
         //TODO: Add event api request here
-        searchEvents(keyword)
+//        searchEvents(keyword)
     }
     
     private func isTextInputValid(_ textField: UITextField) -> String? {
@@ -278,15 +281,15 @@ extension EventSearchViewController: SearchbarDelegate {
     
     func searchbarTextShouldReturn(_ textField: UITextField) -> Bool {
         guard let keyword = isTextInputValid(textField) else { return false }
-//        searchLocations(keyword, completion: { [weak self] (placemarks, error) in
-//            guard let self = self, let first = placemarks.first else { return }
-//            self.didSelectPlacemark(first)
-//        })
-        searchEvents(keyword)
-        if foundPlacemarks.count > 0
-        {
-            self.didSelectPlacemark(foundPlacemarks.first!)
-        }
+        searchLocations(keyword, completion: { [weak self] (placemarks, error) in
+            guard let self = self, let first = placemarks.first else { return }
+            self.didSelectPlacemark(first)
+        })
+//        searchEvents(keyword)
+//        if foundPlacemarks.count > 0
+//        {
+//            self.didSelectPlacemark(foundPlacemarks.first!)
+//        }
         return true
     }
     /**
@@ -435,13 +438,16 @@ extension EventSearchViewController: MKMapViewDelegate {
             
             DispatchQueue.main.asyncAfter(deadline: .now() + 1.5, execute: { [weak self] in
                 
-                if let eventCollectionViewController = UIStoryboard.Main.instantiateViewController(withIdentifier: "EventCollection") as? EventCollectionViewController {
-                    eventCollectionViewController.eventLandmarks = self?.eventLandmarks ?? [EventLandmark]()
-                    if let navigator = self?.navigationController {
-                        navigator.pushViewController(eventCollectionViewController, animated: true)
-                }
+                let controller = AirbnbExploreController()
                 
+                if let navigator = self?.navigationController {
+                    navigator.pushViewController(controller, animated: true)
                 }
+
+//                if let eventCollectionViewController = UIStoryboard.Main.instantiateViewController(withIdentifier: "EventCollection") as? EventCollectionViewController {
+//                    eventCollectionViewController.eventLandmarks = self?.eventLandmarks ?? [EventLandmark]()
+//
+//                }
 
             })
             
