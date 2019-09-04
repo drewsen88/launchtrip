@@ -17,6 +17,7 @@ class AirbnbHomeItemCell: BaseCollectionCell {
             descriptionLabel.text = home?.homeDescription
             reviewCountLabel.text = "\(home!.reviewCount) Reviews"
             ratingView.rating = home!.rating
+            titleLabel.text = home?.title
         }
     }
     
@@ -38,6 +39,16 @@ class AirbnbHomeItemCell: BaseCollectionCell {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.font = UIFont.boldSystemFont(ofSize: 14)
+        view.textColor = UIColor.black
+        return view
+    }()
+    
+    var titleLabel: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.lineBreakMode = .byWordWrapping
+        view.numberOfLines = 2
+        view.font = UIFont.systemFont(ofSize: 18)
         view.textColor = UIColor.black
         return view
     }()
@@ -66,12 +77,29 @@ class AirbnbHomeItemCell: BaseCollectionCell {
     
     override func setupViews() {
         
+        var titleOffset: CGFloat = 0
+        if titleLabel.text != "" && titleLabel.text != nil{
+            removeSubviews()
+            imageView.removeConstraints(imageView.constraints)
+            titleOffset = 40
+        }
+        
         addSubview(imageView)
         
-        imageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        imageView.heightAnchor.constraint(equalToConstant: 180).isActive = true
+        imageView.topAnchor.constraint(equalTo: topAnchor, constant: titleOffset).isActive = true
+        imageView.heightAnchor.constraint(equalToConstant: 180 - titleOffset).isActive = true
         imageView.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
         imageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
+        
+        if titleLabel.text != "" && titleLabel.text != nil{
+            addSubview(titleLabel)
+            
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: -30).isActive = true
+            titleLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
+            titleLabel.leftAnchor.constraint(equalTo: leftAnchor, constant: 15).isActive = true
+            titleLabel.widthAnchor.constraint(equalTo: imageView.widthAnchor).isActive = true
+        }
+        
         
         addSubview(priceLabel)
         

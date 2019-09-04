@@ -97,6 +97,7 @@ extension AirbnbCategoryTableCell: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! AirbnbHomeItemCell
         
         cell.home = items[indexPath.item]
+        cell.setupViews()
         
         return cell
     }

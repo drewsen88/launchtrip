@@ -259,9 +259,9 @@ extension EventSearchViewController: SearchbarDelegate {
     func searchbarTextDidChange(_ textField: UITextField) {
         guard let keyword = isTextInputValid(textField) else { return }
         searchResultsView.state = .loading
-        searchLocations(keyword)
+//        searchLocations(keyword)
         //TODO: Add event api request here
-//        searchEvents(keyword)
+        searchEvents(keyword)
     }
     
     private func isTextInputValid(_ textField: UITextField) -> String? {
@@ -281,15 +281,15 @@ extension EventSearchViewController: SearchbarDelegate {
     
     func searchbarTextShouldReturn(_ textField: UITextField) -> Bool {
         guard let keyword = isTextInputValid(textField) else { return false }
-        searchLocations(keyword, completion: { [weak self] (placemarks, error) in
-            guard let self = self, let first = placemarks.first else { return }
-            self.didSelectPlacemark(first)
-        })
-//        searchEvents(keyword)
-//        if foundPlacemarks.count > 0
-//        {
-//            self.didSelectPlacemark(foundPlacemarks.first!)
-//        }
+//        searchLocations(keyword, completion: { [weak self] (placemarks, error) in
+//            guard let self = self, let first = placemarks.first else { return }
+//            self.didSelectPlacemark(first)
+//        })
+        searchEvents(keyword)
+        if foundPlacemarks.count > 0
+        {
+            self.didSelectPlacemark(foundPlacemarks.first!)
+        }
         return true
     }
     /**
@@ -330,8 +330,23 @@ extension EventSearchViewController: SearchbarDelegate {
     private func searchEvents (_ keyword: String, completion: (([CLPlacemark], Error?) -> Void)? = nil)
     {
         
+        let currDate = Date()
+        let distantFuture = Date.distantFuture
+        var currDatestring: String
+        var distantFutureString: String
+        
+        let formatter = ISO8601DateFormatter()
+        currDatestring = formatter.string(from: currDate)
+        
+        let PDT = TimeZone(abbreviation: "PDT")
+        let options: ISO8601DateFormatter.Options = [.withInternetDateTime, .withDashSeparatorInDate, .withColonSeparatorInTime, .withTimeZone]
+        currDatestring = ISO8601DateFormatter.string(from: currDate, timeZone: PDT!, formatOptions: options)
+        distantFutureString = ISO8601DateFormatter.string(from: distantFuture, timeZone: PDT!, formatOptions: options)
+        
         let parameters: Parameters = [
             "name": keyword,
+            "minStartDate": currDatestring,
+            "maxStartDate": distantFutureString,
             "sort": "starts",
             "order": "ASC"
         ]
@@ -440,6 +455,8 @@ extension EventSearchViewController: MKMapViewDelegate {
                 
                 let controller = AirbnbExploreController()
                 
+                //pass landmarks to event and hotel detail view
+                controller.events = self!.eventLandmarks
                 if let navigator = self?.navigationController {
                     navigator.pushViewController(controller, animated: true)
                 }

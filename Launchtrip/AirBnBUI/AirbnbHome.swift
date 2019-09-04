@@ -10,16 +10,18 @@ import Foundation
 
 class AirbnbHome {
     var imageName: String
+    var title: String
     var homeDescription: String
     var price: Int
     var rating: Double
     var reviewCount: Int
     
-    init(imageName: String, description: String, price: Int, reviewCount: Int, rating: Double) {
+    init(imageName: String, description: String, price: Int, reviewCount: Int, rating: Double, title:String) {
         self.imageName = imageName
         self.homeDescription = description
         self.price = price
         self.reviewCount = reviewCount
         self.rating = rating
+        self.title = title
     }
 }

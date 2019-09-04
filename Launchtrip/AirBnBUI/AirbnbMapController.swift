@@ -19,7 +19,7 @@ class AirbnbMapController: UIViewController {
         var arr = [AirbnbHome]()
         for i in 5..<11 {
             let location = self.locations[Int(arc4random_uniform(UInt32(self.locations.count)))]
-            let item = AirbnbHome(imageName: "home-\(i)", description: "Entire home in \(location)", price: Int(arc4random_uniform(100) + 200), reviewCount: Int(arc4random_uniform(300) + 1), rating: Double(arc4random()) / Double(UINT32_MAX) + 4)
+            let item = AirbnbHome(imageName: "home-\(i)", description: "Entire home in \(location)", price: Int(arc4random_uniform(100) + 200), reviewCount: Int(arc4random_uniform(300) + 1), rating: Double(arc4random()) / Double(UINT32_MAX) + 4, title: "")
             arr.append(item)
         }
         return arr

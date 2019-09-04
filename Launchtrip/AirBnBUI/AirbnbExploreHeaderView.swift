@@ -14,6 +14,7 @@ protocol AirbnbExploreHeaderViewDelegate {
     func didSelect(viewController: UIViewController, completion: (() -> Void)?)
     func didCollapseHeader(completion: (() -> Void)?)
     func didExpandHeader(completion: (() -> Void)?)
+    func showEventSearch()
 }
 
 class AirbnbExploreHeaderView: UIView {
@@ -125,6 +126,8 @@ class AirbnbExploreHeaderView: UIView {
         btn.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
         btn.adjustsImageWhenHighlighted = false
         
+        btn.addTarget(self, action: #selector(AirbnbExploreHeaderView.handleEventSearch), for: .touchUpInside)
+        
         let img = UIImage(named: "Globe")
         btn.setImage(img, for: .normal)
         btn.imageView?.contentMode = .scaleAspectFit
@@ -136,6 +139,8 @@ class AirbnbExploreHeaderView: UIView {
         btn.titleLabel?.lineBreakMode = .byTruncatingTail
         return btn
     }()
+    
+
     
     lazy var datePicker: AirbnbDatePicker = {
         let input = AirbnbDatePicker()
@@ -182,6 +187,7 @@ class AirbnbExploreHeaderView: UIView {
         collapseButton.widthAnchor.constraint(equalToConstant: collapseButtonHeight).isActive = true
         
         addSubview(destinationFilter)
+        
         
         destinationFilter.heightAnchor.constraint(equalToConstant: 50).isActive = true
         destinationFilterTopConstraint = destinationFilter.topAnchor.constraint(equalTo: topAnchor, constant: collapseButtonHeight + collapseButtonMaxTopSpacing + 10)
@@ -291,6 +297,11 @@ class AirbnbExploreHeaderView: UIView {
             pagerView.titleColor = UIColor.fade(fromColor: UIColor.white, toColor: UIColor.darkGray, withPercentage: 1 - minMidPercentage)
             pagerView.selectedTitleColor = UIColor.fade(fromColor: UIColor.white, toColor: Theme.PRIMARY_COLOR, withPercentage: 1 - minMidPercentage)
         }
+    }
+    
+    @objc func handleEventSearch()
+    {
+        pageTabDelegate?.showEventSearch()
     }
     
     @objc func handleCollapse() {

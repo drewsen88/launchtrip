@@ -27,6 +27,8 @@ class AirbnbExploreController: UIViewController {
     let imageExpandAnimationController = ImageExpandAnimationController()
     let imageShrinkAnimationController = ImageShrinkAnimationController()
     
+    public var events = [EventLandmark]()
+    
     // MARK: - View Components
     
     lazy var headerView: AirbnbExploreHeaderView = {
@@ -84,6 +86,7 @@ class AirbnbExploreController: UIViewController {
         super.viewWillAppear(animated)
         
         if isFirstAppear {
+            feedController.events = events
             headerViewHeightConstraint?.constant = maxHeaderHeight
             isFirstAppear = false
         }
@@ -211,6 +214,16 @@ extension AirbnbExploreController: AirbnbExploreHeaderViewDelegate {
             self.headerView.updateHeader(newHeight: self.maxHeaderHeight, offset: self.maxHeaderHeight - oldHeight)
             self.view.layoutIfNeeded()
         })
+    }
+    
+    func showEventSearch() {
+        if let eventSearchviewController = UIStoryboard.Main.instantiateViewController(withIdentifier: "EventSearch") as? EventSearchViewController {
+            
+            if let navigator = navigationController {
+//                eventSearchviewController.firstName = firstName
+                navigator.pushViewController(eventSearchviewController, animated: false)
+            }
+        }
     }
 }
 
